@@ -90,7 +90,7 @@
           },
           "options": {
             "karmaConfig": "./karma.conf.js",
-            "polyfills": ["zone.js"],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
