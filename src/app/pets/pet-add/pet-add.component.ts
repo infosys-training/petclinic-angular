@@ -21,7 +21,7 @@
  */
 
 
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import {Pet} from '../pet';
 import {PetType} from '../../pettypes/pettype';
 import {Owner} from '../../owners/owner';
@@ -30,14 +30,24 @@ import {PetTypeService} from '../../pettypes/pettype.service';
 import {PetService} from '../pet.service';
 import {OwnerService} from '../../owners/owner.service';
 
-import * as moment from 'moment';
+import moment from 'moment';
+import { FormsModule } from '@angular/forms';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-pet-add',
-  templateUrl: './pet-add.component.html',
-  styleUrls: ['./pet-add.component.css']
+    selector: 'app-pet-add',
+    templateUrl: './pet-add.component.html',
+    styleUrls: ['./pet-add.component.css'],
+    imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, DatePipe]
 })
 export class PetAddComponent implements OnInit {
+  private ownerService = inject(OwnerService);
+  private petService = inject(PetService);
+  private petTypeService = inject(PetTypeService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
   pet: Pet;
   @Input() currentType: PetType;
   currentOwner: Owner;
@@ -45,8 +55,7 @@ export class PetAddComponent implements OnInit {
   addedSuccess = false;
   errorMessage: string;
 
-  constructor(private ownerService: OwnerService, private petService: PetService,
-              private petTypeService: PetTypeService, private router: Router, private route: ActivatedRoute) {
+  constructor() {
     this.pet = {} as Pet;
     this.currentOwner = {} as Owner;
     this.currentType = {} as PetType;

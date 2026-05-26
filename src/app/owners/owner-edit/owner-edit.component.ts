@@ -20,25 +20,27 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { OwnerService } from '../owner.service';
 import { Owner } from '../owner';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-owner-edit',
-  templateUrl: './owner-edit.component.html',
-  styleUrls: ['./owner-edit.component.css'],
+    selector: 'app-owner-edit',
+    templateUrl: './owner-edit.component.html',
+    styleUrls: ['./owner-edit.component.css'],
+    imports: [FormsModule]
 })
 export class OwnerEditComponent implements OnInit {
+  private ownerService = inject(OwnerService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
   owner: Owner;
   errorMessage: string; // server error message
   ownerId: number;
-  constructor(
-    private ownerService: OwnerService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  constructor() {
     this.owner = {} as Owner;
   }
 

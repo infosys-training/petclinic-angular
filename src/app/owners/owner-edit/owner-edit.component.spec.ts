@@ -53,18 +53,17 @@ describe('OwnerEditComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [OwnerEditComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        // schemas: [ NO_ERRORS_SCHEMA ],
-        imports: [FormsModule, RouterTestingModule.withRoutes([
-          { path: 'owners', component: OwnerListComponent}
-      ])],
-        providers: [
-          { provide: OwnerService, useClass: OwnserServiceStub },
-          { provide: Router, useClass: RouterStub },
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-        ],
-      }).compileComponents();
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    // schemas: [ NO_ERRORS_SCHEMA ],
+    imports: [FormsModule, RouterTestingModule.withRoutes([
+            { path: 'owners', component: OwnerListComponent }
+        ]), OwnerEditComponent],
+    providers: [
+        { provide: OwnerService, useClass: OwnserServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+    ],
+}).compileComponents();
     })
   );
 
@@ -72,7 +71,7 @@ describe('OwnerEditComponent', () => {
     fixture = TestBed.createComponent(OwnerEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router=TestBed.get(Router);
+    router=TestBed.inject(Router);
     spyOn(router,'navigate');
   });
 

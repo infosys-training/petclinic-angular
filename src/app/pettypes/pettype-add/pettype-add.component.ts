@@ -1,18 +1,22 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import {PetType} from '../pettype';
 import {PetTypeService} from '../pettype.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-pettype-add',
-  templateUrl: './pettype-add.component.html',
-  styleUrls: ['./pettype-add.component.css']
+    selector: 'app-pettype-add',
+    templateUrl: './pettype-add.component.html',
+    styleUrls: ['./pettype-add.component.css'],
+    imports: [FormsModule]
 })
 export class PettypeAddComponent implements OnInit {
+  private pettypeService = inject(PetTypeService);
+
   pettype: PetType;
   errorMessage: string;
   @Output() newPetType = new EventEmitter<PetType>();
 
-  constructor(private pettypeService: PetTypeService) {
+  constructor() {
     this.pettype = {} as PetType;
   }
 
