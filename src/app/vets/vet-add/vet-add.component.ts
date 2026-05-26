@@ -20,25 +20,31 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {Specialty} from '../../specialties/specialty';
 import {SpecialtyService} from 'app/specialties/specialty.service';
 import {Vet} from '../vet';
 import {Router} from '@angular/router';
 import {VetService} from '../vet.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-vet-add',
-  templateUrl: './vet-add.component.html',
-  styleUrls: ['./vet-add.component.css']
+    selector: 'app-vet-add',
+    templateUrl: './vet-add.component.html',
+    styleUrls: ['./vet-add.component.css'],
+    imports: [FormsModule]
 })
 export class VetAddComponent implements OnInit {
+  private specialtyService = inject(SpecialtyService);
+  private vetService = inject(VetService);
+  private router = inject(Router);
+
   vet: Vet;
   specialtiesList: Specialty[];
   selectedSpecialty: Specialty;
   errorMessage: string;
 
-  constructor(private specialtyService: SpecialtyService, private vetService: VetService, private router: Router) {
+  constructor() {
     this.vet = {} as Vet;
     this.selectedSpecialty = {} as Specialty;
     this.specialtiesList = [];

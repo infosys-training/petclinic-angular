@@ -5,12 +5,10 @@ import {RouterLinkStubDirective, RouterOutletStubComponent} from './router-stubs
 
 @NgModule({
   imports: [
-    CommonModule
-  ],
-  declarations: [
-  DummyComponent,
-  RouterLinkStubDirective,
-  RouterOutletStubComponent
+    CommonModule,
+    DummyComponent,
+    RouterLinkStubDirective,
+    RouterOutletStubComponent
   ]
 })
 export class TestingModule { }

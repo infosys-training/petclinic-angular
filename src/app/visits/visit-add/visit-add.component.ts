@@ -20,7 +20,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {Visit} from '../visit';
 import {VisitService} from '../visit.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -29,15 +29,26 @@ import {Pet} from '../../pets/pet';
 import {PetType} from '../../pettypes/pettype';
 import {Owner} from '../../owners/owner';
 
-import * as moment from 'moment';
+import moment from 'moment';
 import {OwnerService} from '../../owners/owner.service';
+import { FormsModule } from '@angular/forms';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { VisitListComponent } from '../visit-list/visit-list.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-visit-add',
-  templateUrl: './visit-add.component.html',
-  styleUrls: ['./visit-add.component.css']
+    selector: 'app-visit-add',
+    templateUrl: './visit-add.component.html',
+    styleUrls: ['./visit-add.component.css'],
+    imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, VisitListComponent, DatePipe]
 })
 export class VisitAddComponent implements OnInit {
+  private visitService = inject(VisitService);
+  private petService = inject(PetService);
+  private ownerService = inject(OwnerService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
 
   visit: Visit;
   currentPet: Pet;
@@ -46,11 +57,7 @@ export class VisitAddComponent implements OnInit {
   addedSuccess = false;
   errorMessage: string;
 
-  constructor(private visitService: VisitService,
-              private petService: PetService,
-              private ownerService: OwnerService,
-              private router: Router,
-              private route: ActivatedRoute) {
+  constructor() {
     this.visit = {} as Visit;
     this.currentPet = {} as Pet;
     this.currentOwner = {} as Owner;
