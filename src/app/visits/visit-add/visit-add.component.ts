@@ -33,6 +33,7 @@ import * as moment from 'moment';
 import {OwnerService} from '../../owners/owner.service';
 
 @Component({
+  standalone: false,
   selector: 'app-visit-add',
   templateUrl: './visit-add.component.html',
   styleUrls: ['./visit-add.component.css']
