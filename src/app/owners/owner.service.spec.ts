@@ -61,7 +61,7 @@ describe('OwnerService', () => {
     // Inject the http, test controller, and service-under-test
     // as they will be referenced by each test.
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    let httpClient = TestBed.inject(HttpClient);
+    const httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject<HttpTestingController>(
       HttpTestingController as Type<HttpTestingController>
     );
@@ -106,7 +106,7 @@ describe('OwnerService', () => {
   });
 
   it('add owner', () => {
-    let owner = {
+    const owner = {
       id: 0,
       firstName: 'Mary',
       lastName: 'John',
@@ -138,7 +138,7 @@ describe('OwnerService', () => {
   });
 
   it('updateOwner', () => {
-    let owner = {
+    const owner = {
       id: 1,
       firstName: 'George',
       lastName: 'Franklin',
