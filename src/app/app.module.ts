@@ -34,7 +34,7 @@ import {VetsModule} from './vets/vets.module';
 import {PartsModule} from './parts/parts.module';
 import {SpecialtiesModule} from './specialties/specialties.module';
 import {HttpErrorHandler} from './error.service';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {provideAnimations} from '@angular/platform-browser/animations';
 
 
 @NgModule({ declarations: [
@@ -49,10 +49,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         VetsModule,
         SpecialtiesModule,
         PartsModule,
-        BrowserAnimationsModule,
         AppRoutingModule], providers: [
         HttpErrorHandler,
         provideHttpClient(withInterceptorsFromDi()),
+        provideAnimations(),
     ] })
 export class AppModule {
 }

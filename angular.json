@@ -89,7 +89,6 @@
             }
           },
           "options": {
-            "main": "src/test.ts",
             "karmaConfig": "./karma.conf.js",
             "polyfills": ["zone.js"],
             "tsConfig": "src/tsconfig.spec.json",
