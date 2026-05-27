@@ -27,6 +27,7 @@ import {NavigationExtras} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 
 @Directive({
+  standalone: false,
   selector: '[appRouterLink]',
 })
 export class RouterLinkStubDirective {
@@ -39,7 +40,8 @@ export class RouterLinkStubDirective {
   }
 }
 
-@Component({selector: 'app-router-outlet', template: ''})
+@Component({
+  standalone: false,selector: 'app-router-outlet', template: ''})
 export class RouterOutletStubComponent {
 }
 
@@ -72,6 +74,6 @@ export class ActivatedRouteStub {
   // ActivatedRoute.snapshot.params
   get snapshot() {
     this.testParams = {id: 1};
-    return {params: this.testParams};
+    return {params: this.testParams, data: {}};
   }
 }

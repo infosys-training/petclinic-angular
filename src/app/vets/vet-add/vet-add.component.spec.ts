@@ -27,6 +27,19 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import {VetAddComponent} from './vet-add.component';
 import {FormsModule} from '@angular/forms';
+import {VetService} from '../vet.service';
+import {SpecialtyService} from '../../specialties/specialty.service';
+import {Router} from '@angular/router';
+import {RouterStub} from '../../testing/router-stubs';
+import {Observable, of} from 'rxjs';
+
+class VetServiceStub {
+  addVet(): Observable<any> { return of({}); }
+}
+
+class SpecialtyServiceStub {
+  getSpecialties(): Observable<any> { return of([]); }
+}
 
 describe('VetAddComponent', () => {
   let component: VetAddComponent;
@@ -36,7 +49,12 @@ describe('VetAddComponent', () => {
     TestBed.configureTestingModule({
       declarations: [VetAddComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
+      imports: [FormsModule],
+      providers: [
+        {provide: VetService, useClass: VetServiceStub},
+        {provide: SpecialtyService, useClass: SpecialtyServiceStub},
+        {provide: Router, useClass: RouterStub}
+      ]
     })
       .compileComponents();
   }));
@@ -46,8 +64,8 @@ describe('VetAddComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-// TODO complete test
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
