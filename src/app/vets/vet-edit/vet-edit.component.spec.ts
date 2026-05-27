@@ -26,7 +26,23 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import {VetEditComponent} from './vet-edit.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {VetService} from '../vet.service';
+import {SpecialtyService} from '../../specialties/specialty.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {RouterStub} from '../../testing/router-stubs';
+import {Observable, of} from 'rxjs';
+import {Vet} from '../vet';
+
+class VetServiceStub {
+  getVetById(): Observable<Vet> { return of({id: 1, firstName: 'Test', lastName: 'Vet', specialties: []} as Vet); }
+  updateVet(): Observable<any> { return of({}); }
+}
+
+class SpecialtyServiceStub {
+  getSpecialties(): Observable<any> { return of([]); }
+}
 
 describe('VetEditComponent', () => {
   let component: VetEditComponent;
@@ -36,7 +52,21 @@ describe('VetEditComponent', () => {
     TestBed.configureTestingModule({
       declarations: [VetEditComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
+      imports: [FormsModule, ReactiveFormsModule, MatSelectModule],
+      providers: [
+        {provide: VetService, useClass: VetServiceStub},
+        {provide: SpecialtyService, useClass: SpecialtyServiceStub},
+        {provide: Router, useClass: RouterStub},
+        {provide: ActivatedRoute, useValue: {
+          snapshot: {
+            params: {id: 1},
+            data: {
+              specs: [],
+              vet: {id: 1, firstName: 'Test', lastName: 'Vet', specialties: []}
+            }
+          }
+        }}
+      ]
     })
       .compileComponents();
   }));
@@ -46,8 +76,8 @@ describe('VetEditComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-// TODO complete test
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
