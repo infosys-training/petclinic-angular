@@ -27,6 +27,7 @@ import {NavigationExtras} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 
 @Directive({
+  standalone: false,
   selector: '[appRouterLink]',
 })
 export class RouterLinkStubDirective {
@@ -39,7 +40,7 @@ export class RouterLinkStubDirective {
   }
 }
 
-@Component({selector: 'app-router-outlet', template: ''})
+@Component({standalone: false, selector: 'app-router-outlet', template: ''})
 export class RouterOutletStubComponent {
 }
 
@@ -59,12 +60,12 @@ export class ActivatedRouteStub {
 
   // Test parameters
   // tslint:disable-next-line:variable-name
-  private _testParams: {};
+  private _testParams: Record<string, unknown> = {};
   get testParams() {
     return this._testParams;
   }
 
-  set testParams(params: {}) {
+  set testParams(params: Record<string, unknown>) {
     this._testParams = params;
     this.subject.next(params);
   }

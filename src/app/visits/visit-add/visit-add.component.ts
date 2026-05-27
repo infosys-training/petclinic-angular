@@ -29,10 +29,11 @@ import {Pet} from '../../pets/pet';
 import {PetType} from '../../pettypes/pettype';
 import {Owner} from '../../owners/owner';
 
-import * as moment from 'moment';
+import moment from 'moment';
 import {OwnerService} from '../../owners/owner.service';
 
 @Component({
+  standalone: false,
   selector: 'app-visit-add',
   templateUrl: './visit-add.component.html',
   styleUrls: ['./visit-add.component.css']
@@ -77,8 +78,6 @@ export class VisitAddComponent implements OnInit {
 
   onSubmit(visit: Visit) {
     visit.id = null;
-    const that = this;
-
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
     visit.date = moment(visit.date).format('YYYY-MM-DD');
 
@@ -86,7 +85,7 @@ export class VisitAddComponent implements OnInit {
       newVisit => {
         this.visit = newVisit;
         this.addedSuccess = true;
-        that.gotoOwnerDetail();
+        this.gotoOwnerDetail();
       },
       error => this.errorMessage = error as any
     );

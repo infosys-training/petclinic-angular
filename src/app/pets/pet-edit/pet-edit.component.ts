@@ -29,10 +29,11 @@ import {Owner} from '../../owners/owner';
 import {PetType} from '../../pettypes/pettype';
 import {PetTypeService} from '../../pettypes/pettype.service';
 
-import * as moment from 'moment';
+import moment from 'moment';
 import {OwnerService} from '../../owners/owner.service';
 
 @Component({
+  standalone: false,
   selector: 'app-pet-edit',
   templateUrl: './pet-edit.component.html',
   styleUrls: ['./pet-edit.component.css']
@@ -77,12 +78,11 @@ export class PetEditComponent implements OnInit {
 
   onSubmit(pet: Pet) {
     pet.type = this.currentType;
-    const that = this;
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
     pet.birthDate = moment(pet.birthDate).format('YYYY-MM-DD');
 
     this.petService.updatePet(pet.id.toString(), pet).subscribe(
-      res => this.gotoOwnerDetail(this.currentOwner),
+      () => this.gotoOwnerDetail(this.currentOwner),
       error => this.errorMessage = error as any
     );
   }
