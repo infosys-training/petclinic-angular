@@ -33,6 +33,7 @@ import * as moment from 'moment';
 import {OwnerService} from '../../owners/owner.service';
 
 @Component({
+  standalone: false,
   selector: 'app-pet-edit',
   templateUrl: './pet-edit.component.html',
   styleUrls: ['./pet-edit.component.css']
