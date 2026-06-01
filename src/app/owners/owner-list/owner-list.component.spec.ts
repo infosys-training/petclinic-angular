@@ -28,7 +28,7 @@ import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {OwnerListComponent} from './owner-list.component';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {OwnerService} from '../owner.service';
 import {Owner} from '../owner';
 import {Observable, of} from 'rxjs';
@@ -74,7 +74,7 @@ describe('OwnerListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [DummyComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [CommonModule, FormsModule, PartsModule, OwnersModule],
+      imports: [CommonModule, FormsModule, PartsModule, OwnersModule, RouterModule.forRoot([])],
       providers: [
         {provide: OwnerService, useValue: ownerService},
         {provide: ActivatedRoute, useClass: ActivatedRouteStub}
