@@ -23,20 +23,43 @@
  */
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {VetEditComponent} from './vet-edit.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {SpecialtyService} from '../../specialties/specialty.service';
+import {VetService} from '../vet.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRouteStub, RouterStub} from '../../testing/router-stubs';
+import {provideHttpClient} from '@angular/common/http';
+import {HttpErrorHandler} from '../../error.service';
 
 describe('VetEditComponent', () => {
   let component: VetEditComponent;
   let fixture: ComponentFixture<VetEditComponent>;
+  const mockRoute = {
+    snapshot: {
+      data: {
+        specs: [],
+        vet: {id: 1, firstName: 'James', lastName: 'Carter', specialties: []}
+      }
+    }
+  };
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [VetEditComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [FormsModule, ReactiveFormsModule, MatSelectModule],
+      providers: [
+        provideHttpClient(),
+        SpecialtyService,
+        VetService,
+        HttpErrorHandler,
+        {provide: Router, useClass: RouterStub},
+        {provide: ActivatedRoute, useValue: mockRoute}
+      ]
     })
       .compileComponents();
   }));
@@ -46,8 +69,7 @@ describe('VetEditComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-// TODO complete test
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

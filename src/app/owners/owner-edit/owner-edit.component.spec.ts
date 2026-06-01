@@ -23,7 +23,6 @@
  */
 
 import {
-  async,
   ComponentFixture,
   TestBed,
   waitForAsync,
@@ -31,7 +30,6 @@ import {
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { OwnerEditComponent } from './owner-edit.component';
 import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
 import { OwnerService } from '../owner.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
@@ -56,9 +54,7 @@ describe('OwnerEditComponent', () => {
         declarations: [OwnerEditComponent],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
         // schemas: [ NO_ERRORS_SCHEMA ],
-        imports: [FormsModule, RouterTestingModule.withRoutes([
-          { path: 'owners', component: OwnerListComponent}
-      ])],
+        imports: [FormsModule],
         providers: [
           { provide: OwnerService, useClass: OwnserServiceStub },
           { provide: Router, useClass: RouterStub },
@@ -72,7 +68,7 @@ describe('OwnerEditComponent', () => {
     fixture = TestBed.createComponent(OwnerEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router=TestBed.get(Router);
+    router=TestBed.inject(Router);
     spyOn(router,'navigate');
   });
 
@@ -81,17 +77,17 @@ describe('OwnerEditComponent', () => {
   });
 
   it('back button routing', async() => {
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
-    let backbutton = buttons[0];
+    const buttons = fixture.debugElement.queryAll(By.css('button'));
+    const backbutton = buttons[0];
     backbutton.triggerEventHandler('click', null);
     spyOn(component, 'gotoOwnerDetail').and.callThrough();
     expect(router.navigate).toHaveBeenCalledWith(['/owners', 1]);
   });
 
  
-  it('update owner', async(() => {
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
-    let updateOwnerButton = buttons[1].nativeElement;
+  it('update owner', waitForAsync(() => {
+    const buttons = fixture.debugElement.queryAll(By.css('button'));
+    const updateOwnerButton = buttons[1].nativeElement;
     spyOn(component, 'onSubmit');
     updateOwnerButton.click();
     expect(component.onSubmit).toHaveBeenCalled();

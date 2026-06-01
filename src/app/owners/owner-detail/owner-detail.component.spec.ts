@@ -25,10 +25,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
 import { OwnerDetailComponent } from './owner-detail.component';
 import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
 import { OwnerService } from '../owner.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
@@ -44,7 +42,7 @@ class OwnerServiceStub {
 describe('OwnerDetailComponent', () => {
   let component: OwnerDetailComponent;
   let fixture: ComponentFixture<OwnerDetailComponent>;
-  let ownerService = new OwnerServiceStub();
+  const ownerService = new OwnerServiceStub();
   let de: DebugElement;
   let el: HTMLElement;
   let router: Router;
@@ -53,7 +51,7 @@ describe('OwnerDetailComponent', () => {
       TestBed.configureTestingModule({
         declarations: [OwnerDetailComponent],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule, RouterTestingModule],
+        imports: [FormsModule],
         providers: [
           { provide: OwnerService, useClass: OwnerServiceStub },
           { provide: Router, useClass: RouterStub },
@@ -67,7 +65,7 @@ describe('OwnerDetailComponent', () => {
       TestBed.configureTestingModule({
         declarations: [OwnerDetailComponent],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule, RouterTestingModule],
+        imports: [FormsModule],
         providers: [
           { provide: OwnerService, useValue: ownerService },
           { provide: Router, useClass: RouterStub },
@@ -91,7 +89,7 @@ describe('OwnerDetailComponent', () => {
     fixture = TestBed.createComponent(OwnerDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
   });
 
   it('should create OwnerDetailComponent', () => {
@@ -113,19 +111,19 @@ describe('OwnerDetailComponent', () => {
 
   it('routing to owners page on click of editOwner,addPet,gotoOwnersList', () => {
     spyOn(router, 'navigate');
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
+    const buttons = fixture.debugElement.queryAll(By.css('button'));
 
-    let ownersListButton = buttons[0].nativeElement;
+    const ownersListButton = buttons[0].nativeElement;
     ownersListButton.click();
     spyOn(component, 'gotoOwnersList').and.callThrough();
     expect(router.navigate).toHaveBeenCalledWith(['/owners']);
 
-    let editOwnerButton = buttons[1].nativeElement;
+    const editOwnerButton = buttons[1].nativeElement;
     editOwnerButton.click();
     spyOn(component, 'editOwner').and.callThrough();
     expect(router.navigate).toHaveBeenCalledWith(['/owners']);
 
-    let addNewPetButton = buttons[2].nativeElement;
+    const addNewPetButton = buttons[2].nativeElement;
     addNewPetButton.click();
     spyOn(component, 'addPet').and.callThrough();
     expect(router.navigate).toHaveBeenCalledWith(['/owners']);
