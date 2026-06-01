@@ -26,7 +26,7 @@ import {NavigationExtras} from '@angular/router';
 // Only implements params and part of snapshot.params
 import {BehaviorSubject} from 'rxjs';
 
-@Directive({
+@Directive({standalone: false,
   selector: '[appRouterLink]',
 })
 export class RouterLinkStubDirective {
