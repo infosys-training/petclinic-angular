@@ -23,22 +23,20 @@
  */
 
 import {
-  HttpClientTestingModule,
   HttpTestingController,
+  provideHttpClientTesting,
 } from '@angular/common/http/testing';
-// Other imports
 import { TestBed } from '@angular/core/testing';
 import {
-  HttpClient,
   HttpErrorResponse,
   HttpResponse,
+  provideHttpClient,
 } from '@angular/common/http';
 
 import { HttpErrorHandler } from '../error.service';
 
 import { OwnerService } from './owner.service';
 import { Owner } from './owner';
-import { Type } from '@angular/core';
 import { defer } from 'rxjs';
 
 describe('OwnerService', () => {
@@ -48,24 +46,16 @@ describe('OwnerService', () => {
   let httpClientSpy: { get: jasmine.Spy };
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [OwnerService, HttpErrorHandler],
+      providers: [provideHttpClient(), provideHttpClientTesting(), OwnerService, HttpErrorHandler],
     });
 
-    httpTestingController = TestBed.get(HttpTestingController);
-    ownerService = TestBed.get(OwnerService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+    ownerService = TestBed.inject(OwnerService);
     expectedOwners = [
       { id: 1, firstName: 'A' },
       { id: 2, firstName: 'B' },
     ] as Owner[];
-    // Inject the http, test controller, and service-under-test
-    // as they will be referenced by each test.
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    let httpClient = TestBed.inject(HttpClient);
-    httpTestingController = TestBed.inject<HttpTestingController>(
-      HttpTestingController as Type<HttpTestingController>
-    );
-    ownerService = TestBed.inject(OwnerService);
   });
 
   afterEach(() => {
@@ -106,7 +96,7 @@ describe('OwnerService', () => {
   });
 
   it('add owner', () => {
-    let owner = {
+    const owner = {
       id: 0,
       firstName: 'Mary',
       lastName: 'John',
@@ -138,7 +128,7 @@ describe('OwnerService', () => {
   });
 
   it('updateOwner', () => {
-    let owner = {
+    const owner = {
       id: 1,
       firstName: 'George',
       lastName: 'Franklin',

@@ -39,7 +39,8 @@ export class RouterLinkStubDirective {
   }
 }
 
-@Component({selector: 'app-router-outlet', template: ''})
+@Component({
+  standalone: false,selector: 'app-router-outlet', template: ''})
 export class RouterOutletStubComponent {
 }
 
