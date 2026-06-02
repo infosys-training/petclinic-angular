@@ -27,6 +27,7 @@ import {NavigationExtras} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 
 @Directive({
+  standalone: false,
   selector: '[appRouterLink]',
 })
 export class RouterLinkStubDirective {
