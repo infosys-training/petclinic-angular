@@ -54,7 +54,7 @@ export class SpecialtyEditComponent implements OnInit {
 
   onSubmit(specialty: Specialty) {
     this.specialtyService
-      .updateSpecialty(specialty.id.toString(), specialty)
+      .updateSpecialty(specialty.id!.toString(), specialty)
       .subscribe(
         (res) => {
           console.log("update success");

@@ -23,7 +23,7 @@
 import {Pet} from '../pets/pet';
 
 export interface Visit {
-  id: number;
+  id: number | null;
   date: string;
   description: string;
   pet: Pet;

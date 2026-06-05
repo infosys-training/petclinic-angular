@@ -57,7 +57,7 @@ export class VisitListComponent implements OnInit {
   }
 
   deleteVisit(visit: Visit) {
-    this.visitService.deleteVisit(visit.id.toString()).subscribe(
+    this.visitService.deleteVisit(visit.id!.toString()).subscribe(
       (response) => {
         this.responseStatus = response;
         console.log("delete success");

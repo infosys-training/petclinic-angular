@@ -81,7 +81,7 @@ export class OwnerListComponent implements OnInit {
           console.log("this.owners " + this.owners);
         },
         (error) => {
-          this.owners = null;
+          this.owners = [];
         },
       );
     }

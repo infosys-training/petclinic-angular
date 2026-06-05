@@ -33,7 +33,7 @@ import { Owner } from "../../owners/owner";
 import { PetType } from "../../pettypes/pettype";
 import { PetTypeService } from "../../pettypes/pettype.service";
 
-import * as moment from "moment";
+import moment from "moment";
 import { OwnerService } from "../../owners/owner.service";
 
 @Component({
@@ -88,7 +88,7 @@ export class PetEditComponent implements OnInit {
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
     pet.birthDate = moment(pet.birthDate).format("YYYY-MM-DD");
 
-    this.petService.updatePet(pet.id.toString(), pet).subscribe(
+    this.petService.updatePet(pet.id!.toString(), pet).subscribe(
       (res) => this.gotoOwnerDetail(this.currentOwner),
       (error) => (this.errorMessage = error as any),
     );

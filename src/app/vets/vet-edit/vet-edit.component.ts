@@ -101,7 +101,7 @@ export class VetEditComponent implements OnInit {
   }
 
   onSubmit(vet: Vet) {
-    this.vetService.updateVet(vet.id.toString(), vet).subscribe(
+    this.vetService.updateVet(vet.id!.toString(), vet).subscribe(
       (res) => {
         console.log("update success");
         this.gotoVetList();

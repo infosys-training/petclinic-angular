@@ -62,7 +62,7 @@ export class SpecialtyListComponent implements OnInit {
   }
 
   deleteSpecialty(specialty: Specialty) {
-    this.specService.deleteSpecialty(specialty.id.toString()).subscribe(
+    this.specService.deleteSpecialty(specialty.id!.toString()).subscribe(
       (response) => {
         this.responseStatus = response;
         this.specialties = this.specialties.filter(
@@ -85,7 +85,7 @@ export class SpecialtyListComponent implements OnInit {
   showEditSpecialtyComponent(updatedSpecialty: Specialty) {
     this.router.navigate([
       "/specialties",
-      updatedSpecialty.id.toString(),
+      updatedSpecialty.id!.toString(),
       "edit",
     ]);
   }

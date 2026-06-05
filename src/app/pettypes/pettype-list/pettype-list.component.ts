@@ -41,7 +41,7 @@ export class PettypeListComponent implements OnInit {
   }
 
   deletePettype(pettype: PetType) {
-    this.pettypeService.deletePetType(pettype.id.toString()).subscribe(
+    this.pettypeService.deletePetType(pettype.id!.toString()).subscribe(
       (response) => {
         this.responseStatus = response;
         this.pettypes = this.pettypes.filter(
@@ -62,7 +62,7 @@ export class PettypeListComponent implements OnInit {
   }
 
   showEditPettypeComponent(updatedPetType: PetType) {
-    this.router.navigate(["/pettypes", updatedPetType.id.toString(), "edit"]);
+    this.router.navigate(["/pettypes", updatedPetType.id!.toString(), "edit"]);
   }
 
   gotoHome() {

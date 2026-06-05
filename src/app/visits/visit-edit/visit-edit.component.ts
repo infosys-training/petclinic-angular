@@ -28,7 +28,7 @@ import { PetType } from "../../pettypes/pettype";
 import { VisitService } from "../visit.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import * as moment from "moment";
+import moment from "moment";
 import { OwnerService } from "../../owners/owner.service";
 import { PetService } from "../../pets/pet.service";
 
@@ -65,7 +65,7 @@ export class VisitEditComponent implements OnInit {
     this.visitService.getVisitById(visitId).subscribe(
       (visit) => {
         this.visit = visit;
-        this.petService.getPetById(visit.petId).subscribe((pet) => {
+        this.petService.getPetById(visit.petId!).subscribe((pet) => {
           this.currentPet = pet;
           this.currentPetType = pet.type;
           this.ownerService.getOwnerById(pet.ownerId).subscribe((owner) => {
@@ -83,7 +83,7 @@ export class VisitEditComponent implements OnInit {
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
     visit.date = moment(visit.date).format("YYYY-MM-DD");
 
-    this.visitService.updateVisit(visit.id.toString(), visit).subscribe(
+    this.visitService.updateVisit(visit.id!.toString(), visit).subscribe(
       (res) => this.gotoOwnerDetail(),
       (error) => (this.errorMessage = error as any),
     );

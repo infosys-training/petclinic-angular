@@ -21,6 +21,6 @@
  */
 
 export interface Specialty {
-  id: number;
+  id: number | null;
   name: string;
 }

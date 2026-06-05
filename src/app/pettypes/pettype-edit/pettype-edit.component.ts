@@ -53,7 +53,7 @@ export class PettypeEditComponent implements OnInit {
   }
 
   onSubmit(pettype: PetType) {
-    this.pettypeService.updatePetType(pettype.id.toString(), pettype).subscribe(
+    this.pettypeService.updatePetType(pettype.id!.toString(), pettype).subscribe(
       (res) => {
         console.log("update success");
         this.onBack();

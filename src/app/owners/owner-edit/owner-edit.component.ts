@@ -62,7 +62,7 @@ export class OwnerEditComponent implements OnInit {
   }
 
   gotoOwnerDetail(owner: Owner) {
-    this.errorMessage = null;
+    this.errorMessage = '';
     this.router.navigate(["/owners", owner.id]);
   }
 }

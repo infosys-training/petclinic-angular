@@ -156,7 +156,7 @@ describe("OwnerService", () => {
     };
 
     ownerService
-      .updateOwner(owner.id.toString(), owner)
+      .updateOwner(owner.id!.toString(), owner)
       .subscribe((data) => expect(data).toEqual(owner, "updated owner"), fail);
 
     const req = httpTestingController.expectOne(
