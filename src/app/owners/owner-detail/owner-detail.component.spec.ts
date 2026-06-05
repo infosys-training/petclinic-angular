@@ -84,7 +84,7 @@ describe('OwnerDetailComponent', () => {
     address: '110 W. Liberty St.',
     city: 'Madison',
     telephone: '6085551023',
-    pets: null,
+    pets: [],
   };
 
   beforeEach(() => {

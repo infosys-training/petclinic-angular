@@ -67,7 +67,7 @@ describe('OwnerListComponent', () => {
     address: '110 W. Liberty St.',
     city: 'Madison',
     telephone: '6085551023',
-    pets: null
+    pets: []
   };
   let testOwners: Owner[];
 
@@ -103,9 +103,9 @@ describe('OwnerListComponent', () => {
         name: 'Leo',
         birthDate: '2010-09-07',
         type: {id: 1, name: 'cat'},
-        ownerId: null,
-        owner: null,
-        visits: null
+        ownerId: 0,
+        owner: {} as Owner,
+        visits: []
       }]
     }];
 
