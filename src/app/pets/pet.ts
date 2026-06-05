@@ -25,7 +25,7 @@ import {Visit} from '../visits/visit';
 import {PetType} from '../pettypes/pettype';
 
 export interface Pet {
-  id: number;
+  id: number | null;
   ownerId: number;
   name: string;
   birthDate: string;

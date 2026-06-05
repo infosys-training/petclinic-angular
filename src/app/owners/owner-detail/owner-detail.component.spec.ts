@@ -84,14 +84,14 @@ describe('OwnerDetailComponent', () => {
     address: '110 W. Liberty St.',
     city: 'Madison',
     telephone: '6085551023',
-    pets: null,
+    pets: [],
   };
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OwnerDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
   });
 
   it('should create OwnerDetailComponent', () => {

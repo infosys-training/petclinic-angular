@@ -93,9 +93,9 @@ describe('VisitAddComponent', () => {
         address: '110 W. Liberty St.',
         city: 'Madison',
         telephone: '6085551023',
-        pets: null
+        pets: []
       },
-      visits: null
+      visits: []
     };
     petService = fixture.debugElement.injector.get(PetService);
     visitService = fixture.debugElement.injector.get(VisitService);

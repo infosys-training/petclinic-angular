@@ -23,7 +23,7 @@
 import {Pet} from '../pets/pet';
 
 export interface Owner {
-  id: number;
+  id: number | null;
   firstName: string;
   lastName: string;
   address: string;
