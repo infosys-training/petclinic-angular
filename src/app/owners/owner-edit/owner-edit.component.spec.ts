@@ -16,14 +16,11 @@
  *
  */
 
-/* tslint:disable:no-unused-variable */
-
 /**
  * @author Vitaliy Fedoriv
  */
 
 import {
-  async,
   ComponentFixture,
   TestBed,
   waitForAsync,
@@ -31,14 +28,12 @@ import {
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { OwnerEditComponent } from './owner-edit.component';
 import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
 import { OwnerService } from '../owner.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
 import { Owner } from '../owner';
 import { Observable, of } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { OwnerListComponent } from '../owner-list/owner-list.component';
 
 class OwnserServiceStub {
   getOwnerById(): Observable<Owner> {
@@ -55,10 +50,7 @@ describe('OwnerEditComponent', () => {
       TestBed.configureTestingModule({
         declarations: [OwnerEditComponent],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        // schemas: [ NO_ERRORS_SCHEMA ],
-        imports: [FormsModule, RouterTestingModule.withRoutes([
-          { path: 'owners', component: OwnerListComponent}
-      ])],
+        imports: [FormsModule],
         providers: [
           { provide: OwnerService, useClass: OwnserServiceStub },
           { provide: Router, useClass: RouterStub },
@@ -72,24 +64,23 @@ describe('OwnerEditComponent', () => {
     fixture = TestBed.createComponent(OwnerEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router=TestBed.get(Router);
-    spyOn(router,'navigate');
+    router = TestBed.inject(Router);
+    spyOn(router, 'navigate');
   });
 
   it('should create OwnerEditComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('back button routing', async() => {
+  it('back button routing', waitForAsync(() => {
     let buttons = fixture.debugElement.queryAll(By.css('button'));
     let backbutton = buttons[0];
     backbutton.triggerEventHandler('click', null);
     spyOn(component, 'gotoOwnerDetail').and.callThrough();
     expect(router.navigate).toHaveBeenCalledWith(['/owners', 1]);
-  });
+  }));
 
- 
-  it('update owner', async(() => {
+  it('update owner', waitForAsync(() => {
     let buttons = fixture.debugElement.queryAll(By.css('button'));
     let updateOwnerButton = buttons[1].nativeElement;
     spyOn(component, 'onSubmit');

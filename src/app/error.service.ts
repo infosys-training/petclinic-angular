@@ -47,8 +47,8 @@ export class HttpErrorHandler {
 
     return (error: HttpErrorResponse): Observable<T> => {
 
-      let message = (error.error instanceof ErrorEvent) ?
-        error.error.message :
+      let message = (error.status === 0) ?
+        `client-side or network error: ${error.message}` :
         `server returned code ${error.status} with body "${error.error}"`;
       const errorsHeader = error.headers.get('errors');
       if (errorsHeader) {
@@ -62,7 +62,7 @@ export class HttpErrorHandler {
       console.error(error);
       console.error(`${serviceName}::${operation} failed: ${message}`);
 
-      return throwError(message);
+      return throwError(() => message);
     };
 
   }

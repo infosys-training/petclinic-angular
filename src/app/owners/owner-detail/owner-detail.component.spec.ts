@@ -16,8 +16,6 @@
  *
  */
 
-/* tslint:disable:no-unused-variable */
-
 /**
  * @author Vitaliy Fedoriv
  */
@@ -25,10 +23,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
 import { OwnerDetailComponent } from './owner-detail.component';
 import { FormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
 import { OwnerService } from '../owner.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
@@ -53,21 +49,7 @@ describe('OwnerDetailComponent', () => {
       TestBed.configureTestingModule({
         declarations: [OwnerDetailComponent],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule, RouterTestingModule],
-        providers: [
-          { provide: OwnerService, useClass: OwnerServiceStub },
-          { provide: Router, useClass: RouterStub },
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-        ],
-      }).compileComponents();
-    })
-  );
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [OwnerDetailComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule, RouterTestingModule],
+        imports: [FormsModule],
         providers: [
           { provide: OwnerService, useValue: ownerService },
           { provide: Router, useClass: RouterStub },
@@ -91,7 +73,7 @@ describe('OwnerDetailComponent', () => {
     fixture = TestBed.createComponent(OwnerDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
   });
 
   it('should create OwnerDetailComponent', () => {
@@ -101,8 +83,7 @@ describe('OwnerDetailComponent', () => {
   it('find owner using ownerId', () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      // wait for async getOwners
-      fixture.detectChanges(); // update view with name
+      fixture.detectChanges();
       de = fixture.debugElement.query(By.css('.ownerFullName'));
       el = de.nativeElement;
       expect(el.innerText).toBe(
