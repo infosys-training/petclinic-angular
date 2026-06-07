@@ -24,7 +24,7 @@ import {
   ViewChild,
   ChangeDetectionStrategy,
 } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { NgForm, FormsModule } from "@angular/forms";
 import { Specialty } from "../specialty";
 import { SpecialtyService } from "../specialty.service";
 
@@ -33,7 +33,7 @@ import { SpecialtyService } from "../specialty.service";
   templateUrl: "./specialty-add.component.html",
   styleUrls: ["./specialty-add.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  imports: [FormsModule],
 })
 export class SpecialtyAddComponent implements OnInit {
   @ViewChild("specialityForm", { static: true }) specialityForm: NgForm;

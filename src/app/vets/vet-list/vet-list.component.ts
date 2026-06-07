@@ -31,7 +31,6 @@ import { finalize } from "rxjs/operators";
   templateUrl: "./vet-list.component.html",
   styleUrls: ["./vet-list.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
 })
 export class VetListComponent implements OnInit {
   vets: Vet[];

@@ -24,13 +24,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { OwnerService } from "../owner.service";
 import { Owner } from "../owner";
 import { ActivatedRoute, Router } from "@angular/router";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-owner-edit",
   templateUrl: "./owner-edit.component.html",
   styleUrls: ["./owner-edit.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  imports: [FormsModule],
 })
 export class OwnerEditComponent implements OnInit {
   owner: Owner;
@@ -62,7 +63,7 @@ export class OwnerEditComponent implements OnInit {
   }
 
   gotoOwnerDetail(owner: Owner) {
-    this.errorMessage = '';
+    this.errorMessage = "";
     this.router.navigate(["/owners", owner.id]);
   }
 }

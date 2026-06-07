@@ -23,15 +23,16 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { OwnerService } from "../owner.service";
 import { Owner } from "../owner";
-import { Router } from "@angular/router";
+import { Router, RouterLinkActive, RouterLink } from "@angular/router";
 import { finalize } from "rxjs/operators";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-owner-list",
   templateUrl: "./owner-list.component.html",
   styleUrls: ["./owner-list.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  imports: [FormsModule, RouterLinkActive, RouterLink],
 })
 export class OwnerListComponent implements OnInit {
   errorMessage: string;

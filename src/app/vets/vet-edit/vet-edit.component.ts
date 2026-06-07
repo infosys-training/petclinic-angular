@@ -31,14 +31,23 @@ import {
   FormGroup,
   FormControl,
   Validators,
+  FormsModule,
+  ReactiveFormsModule,
 } from "@angular/forms";
+import { MatFormField, MatSelect, MatOption } from "@angular/material/select";
 
 @Component({
   selector: "app-vet-edit",
   templateUrl: "./vet-edit.component.html",
   styleUrls: ["./vet-edit.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormField,
+    MatSelect,
+    MatOption,
+  ],
 })
 export class VetEditComponent implements OnInit {
   vetEditForm: FormGroup;

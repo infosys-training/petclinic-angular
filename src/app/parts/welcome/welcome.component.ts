@@ -27,7 +27,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
   templateUrl: "./welcome.component.html",
   styleUrls: ["./welcome.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
 })
 export class WelcomeComponent implements OnInit {
   constructor() {}

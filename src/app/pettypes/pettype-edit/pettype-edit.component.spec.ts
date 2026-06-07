@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import {PettypeEditComponent} from './pettype-edit.component';
-import {PetTypeService} from '../pettype.service';
-import {PetType} from '../pettype';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ActivatedRouteStub, RouterStub} from '../../testing/router-stubs';
-import {FormsModule} from '@angular/forms';
-import {Observable, of} from 'rxjs/index';
+import { PettypeEditComponent } from "./pettype-edit.component";
+import { PetTypeService } from "../pettype.service";
+import { PetType } from "../pettype";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRouteStub, RouterStub } from "../../testing/router-stubs";
+import { FormsModule } from "@angular/forms";
+import { Observable, of } from "rxjs/index";
 import Spy = jasmine.Spy;
 
 class PetTypeServiceStub {
@@ -16,8 +16,7 @@ class PetTypeServiceStub {
   }
 }
 
-
-describe('PettypeEditComponent', () => {
+describe("PettypeEditComponent", () => {
   let component: PettypeEditComponent;
   let fixture: ComponentFixture<PettypeEditComponent>;
   let pettypeService: PetTypeService;
@@ -26,16 +25,14 @@ describe('PettypeEditComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PettypeEditComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule],
+      imports: [FormsModule, PettypeEditComponent],
       providers: [
-        {provide: PetTypeService, useClass: PetTypeServiceStub},
-        {provide: Router, useClass: RouterStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
-      ]
-    })
-      .compileComponents();
+        { provide: PetTypeService, useClass: PetTypeServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -43,17 +40,18 @@ describe('PettypeEditComponent', () => {
     component = fixture.componentInstance;
     testPettype = {
       id: 1,
-      name: 'test'
+      name: "test",
     };
 
     pettypeService = fixture.debugElement.injector.get(PetTypeService);
-    spy = spyOn(pettypeService, 'getPetTypeById')
-      .and.returnValue(of(testPettype));
+    spy = spyOn(pettypeService, "getPetTypeById").and.returnValue(
+      of(testPettype),
+    );
 
     fixture.detectChanges();
   });
 
-  it('should create PettypeEditComponent', () => {
+  it("should create PettypeEditComponent", () => {
     expect(component).toBeTruthy();
   });
 });

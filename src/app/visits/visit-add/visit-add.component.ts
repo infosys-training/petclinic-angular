@@ -31,13 +31,28 @@ import { Owner } from "../../owners/owner";
 
 import moment from "moment";
 import { OwnerService } from "../../owners/owner.service";
+import { FormsModule } from "@angular/forms";
+import {
+  MatDatepickerInput,
+  MatDatepickerToggle,
+  MatDatepicker,
+} from "@angular/material/datepicker";
+import { VisitListComponent } from "../visit-list/visit-list.component";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "app-visit-add",
   templateUrl: "./visit-add.component.html",
   styleUrls: ["./visit-add.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  imports: [
+    FormsModule,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker,
+    VisitListComponent,
+    DatePipe,
+  ],
 })
 export class VisitAddComponent implements OnInit {
   visit: Visit;

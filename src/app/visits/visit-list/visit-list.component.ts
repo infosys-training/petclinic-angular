@@ -35,7 +35,6 @@ import { Router } from "@angular/router";
   templateUrl: "./visit-list.component.html",
   styleUrls: ["./visit-list.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
 })
 export class VisitListComponent implements OnInit {
   @Input() visits: Visit[];

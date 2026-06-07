@@ -7,13 +7,14 @@ import {
 } from "@angular/core";
 import { PetType } from "../pettype";
 import { PetTypeService } from "../pettype.service";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-pettype-add",
   templateUrl: "./pettype-add.component.html",
   styleUrls: ["./pettype-add.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  imports: [FormsModule],
 })
 export class PettypeAddComponent implements OnInit {
   pettype: PetType;

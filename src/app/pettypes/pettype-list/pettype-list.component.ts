@@ -4,13 +4,15 @@ import { Router } from "@angular/router";
 import { PetTypeService } from "../pettype.service";
 import { Specialty } from "../../specialties/specialty";
 import { finalize } from "rxjs/operators";
+import { FormsModule } from "@angular/forms";
+import { PettypeAddComponent } from "../pettype-add/pettype-add.component";
 
 @Component({
   selector: "app-pettype-list",
   templateUrl: "./pettype-list.component.html",
   styleUrls: ["./pettype-list.component.css"],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false,
+  imports: [FormsModule, PettypeAddComponent],
 })
 export class PettypeListComponent implements OnInit {
   pettypes: PetType[];
