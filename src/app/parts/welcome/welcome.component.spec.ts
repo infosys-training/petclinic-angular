@@ -18,25 +18,23 @@
 
 /* tslint:disable:no-unused-variable */
 
-
 /**
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {WelcomeComponent} from './welcome.component';
+import { WelcomeComponent } from './welcome.component';
 
 describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
   let fixture: ComponentFixture<WelcomeComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [WelcomeComponent]
-    })
-      .compileComponents();
-  }));
+      imports: [WelcomeComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WelcomeComponent);

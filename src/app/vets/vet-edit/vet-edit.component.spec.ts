@@ -22,31 +22,29 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import {VetEditComponent} from './vet-edit.component';
-import {FormsModule} from '@angular/forms';
+import { VetEditComponent } from './vet-edit.component';
+import { FormsModule } from '@angular/forms';
 
 describe('VetEditComponent', () => {
   let component: VetEditComponent;
   let fixture: ComponentFixture<VetEditComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [VetEditComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
-    })
-      .compileComponents();
-  }));
+      imports: [FormsModule, VetEditComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(VetEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-// TODO complete test
+  // TODO complete test
   // it('should create', () => {
   //   expect(component).toBeTruthy();
   // });

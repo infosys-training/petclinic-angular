@@ -16,16 +16,50 @@
  *
  */
 
-// import './polyfills.ts';
-
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
+import {
+  enableProdMode,
+  provideZonelessChangeDetection,
+  importProvidersFrom,
+} from '@angular/core';
 import { environment } from './environments/environment';
-import { AppModule } from './app/app.module';
+
+import { HttpErrorHandler } from './app/error.service';
+import {
+  provideHttpClient,
+  withXhr,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { OwnersModule } from './app/owners/owners.module';
+import { PetsModule } from './app/pets/pets.module';
+import { VisitsModule } from './app/visits/visits.module';
+import { PetTypesModule } from './app/pettypes/pettypes.module';
+import { VetsModule } from './app/vets/vets.module';
+import { SpecialtiesModule } from './app/specialties/specialties.module';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app/app-routing.module';
+import { AppComponent } from './app/app.component';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideZonelessChangeDetection(),
+    importProvidersFrom(
+      FormsModule,
+      OwnersModule,
+      PetsModule,
+      VisitsModule,
+      PetTypesModule,
+      VetsModule,
+      SpecialtiesModule,
+      AppRoutingModule,
+    ),
+    provideAnimations(),
+    HttpErrorHandler,
+    provideHttpClient(withXhr(), withInterceptorsFromDi()),
+  ],
+}).catch((err) => console.log(err));

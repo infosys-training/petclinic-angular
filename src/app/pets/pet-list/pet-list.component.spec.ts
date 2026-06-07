@@ -22,7 +22,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { PetListComponent } from './pet-list.component';
@@ -32,10 +32,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
 import { Pet } from '../pet';
 import { Observable, of } from 'rxjs';
+import { VisitService } from '../../visits/visit.service';
+import { Visit } from '../../visits/visit';
 import Spy = jasmine.Spy;
 
 class PetServiceStub {
   deletePet(petId: string): Observable<number> {
+    return of();
+  }
+}
+
+class VisitServiceStub {
+  getVisits(): Observable<Visit[]> {
+    return of([]);
+  }
+  deleteVisit(visitId: string): Observable<number> {
     return of();
   }
 }
@@ -47,20 +58,18 @@ describe('PetListComponent', () => {
   let petService: PetService;
   let spy: Spy;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [PetListComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule],
-        providers: [
-          { provide: PetService, useClass: PetServiceStub },
-          { provide: Router, useClass: RouterStub },
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(async () => {
+    TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [FormsModule, PetListComponent],
+      providers: [
+        { provide: PetService, useClass: PetServiceStub },
+        { provide: VisitService, useClass: VisitServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+      ],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PetListComponent);
@@ -78,9 +87,9 @@ describe('PetListComponent', () => {
         address: '110 W. Liberty St.',
         city: 'Madison',
         telephone: '6085551023',
-        pets: null,
+        pets: [],
       },
-      visits: null,
+      visits: [],
     };
     component.pet = inputPet;
     petService = fixture.debugElement.injector.get(PetService);

@@ -22,15 +22,15 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {Specialty} from '../specialty';
-import {SpecialtyEditComponent} from './specialty-edit.component';
-import {SpecialtyService} from '../specialty.service';
-import {FormsModule} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ActivatedRouteStub, RouterStub} from '../../testing/router-stubs';
-import {Observable, of} from 'rxjs';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Specialty } from '../specialty';
+import { SpecialtyEditComponent } from './specialty-edit.component';
+import { SpecialtyService } from '../specialty.service';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
+import { Observable, of } from 'rxjs';
 import Spy = jasmine.Spy;
 
 class SpecialityServiceStub {
@@ -46,31 +46,30 @@ describe('SpecialtyEditComponent', () => {
   let spy: Spy;
   let testSpecialty: Specialty;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [SpecialtyEditComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule],
+      imports: [FormsModule, SpecialtyEditComponent],
       providers: [
-        {provide: SpecialtyService, useClass: SpecialityServiceStub},
-        {provide: Router, useClass: RouterStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
-      ]
-    })
-      .compileComponents();
-  }));
+        { provide: SpecialtyService, useClass: SpecialityServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+      ],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SpecialtyEditComponent);
     component = fixture.componentInstance;
     testSpecialty = {
       id: 1,
-      name: 'test'
+      name: 'test',
     };
 
     specialtyService = fixture.debugElement.injector.get(SpecialtyService);
-    spy = spyOn(specialtyService, 'getSpecialtyById')
-      .and.returnValue(of(testSpecialty));
+    spy = spyOn(specialtyService, 'getSpecialtyById').and.returnValue(
+      of(testSpecialty),
+    );
 
     fixture.detectChanges();
   });
