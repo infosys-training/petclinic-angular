@@ -22,7 +22,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 
@@ -34,7 +34,7 @@ import { Owner } from '../owner';
 import { Observable, of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
-import { PartsModule } from '../../parts/parts.module';
+
 import { ActivatedRouteStub } from '../../testing/router-stubs';
 import { OwnerDetailComponent } from '../owner-detail/owner-detail.component';
 import { OwnersModule } from '../owners.module';
@@ -64,19 +64,18 @@ describe('OwnerListComponent', () => {
     address: '110 W. Liberty St.',
     city: 'Madison',
     telephone: '6085551023',
-    pets: null,
+    pets: [],
   };
   let testOwners: Owner[];
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [DummyComponent],
       schemas: [NO_ERRORS_SCHEMA],
       imports: [
         CommonModule,
         FormsModule,
-        PartsModule,
         OwnersModule,
+        DummyComponent,
         RouterTestingModule.withRoutes([
           { path: 'owners', component: OwnerListComponent },
           { path: 'owners/add', component: OwnerAddComponent },
@@ -89,7 +88,7 @@ describe('OwnerListComponent', () => {
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
       ],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     testOwners = [
@@ -106,9 +105,9 @@ describe('OwnerListComponent', () => {
             name: 'Leo',
             birthDate: '2010-09-07',
             type: { id: 1, name: 'cat' },
-            ownerId: null,
-            owner: null,
-            visits: null,
+            ownerId: 0,
+            owner: {} as any,
+            visits: [],
           },
         ],
       },
@@ -129,7 +128,7 @@ describe('OwnerListComponent', () => {
     expect(spy.calls.any()).toBe(true, 'getOwners called');
   });
 
-  it(' should show full name after getOwners observable (async) ', waitForAsync(() => {
+  it(' should show full name after getOwners observable (async) ', async () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       // wait for async getOwners
@@ -140,5 +139,5 @@ describe('OwnerListComponent', () => {
         testOwner.firstName.toString() + ' ' + testOwner.lastName.toString(),
       );
     });
-  }));
+  });
 });

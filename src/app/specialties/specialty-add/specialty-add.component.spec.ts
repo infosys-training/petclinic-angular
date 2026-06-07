@@ -1,10 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Specialty } from '../specialty';
 import { SpecialtyAddComponent } from './specialty-add.component';
 import { SpecialtyService } from '../specialty.service';
 import { FormsModule } from '@angular/forms';
-import { waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
 import { Observable, of } from 'rxjs';
@@ -23,7 +22,7 @@ describe('SpecialtyAddComponent', () => {
   let spy: Spy;
   let testSpecialty: Specialty;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [FormsModule, SpecialtyAddComponent],
@@ -33,8 +32,8 @@ describe('SpecialtyAddComponent', () => {
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
       ],
     }).compileComponents();
-  }));
-  beforeEach(waitForAsync(() => {
+  });
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [FormsModule, SpecialtyAddComponent],
@@ -44,7 +43,7 @@ describe('SpecialtyAddComponent', () => {
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
       ],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SpecialtyAddComponent);

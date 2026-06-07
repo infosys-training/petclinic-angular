@@ -22,7 +22,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
@@ -48,7 +48,7 @@ describe('OwnerDetailComponent', () => {
   let de: DebugElement;
   let el: HTMLElement;
   let router: Router;
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [FormsModule, RouterTestingModule, OwnerDetailComponent],
@@ -58,8 +58,8 @@ describe('OwnerDetailComponent', () => {
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
       ],
     }).compileComponents();
-  }));
-  beforeEach(waitForAsync(() => {
+  });
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [FormsModule, RouterTestingModule, OwnerDetailComponent],
@@ -69,7 +69,7 @@ describe('OwnerDetailComponent', () => {
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
       ],
     }).compileComponents();
-  }));
+  });
 
   const owner: Owner = {
     id: 10,
@@ -78,7 +78,7 @@ describe('OwnerDetailComponent', () => {
     address: '110 W. Liberty St.',
     city: 'Madison',
     telephone: '6085551023',
-    pets: null,
+    pets: [],
   };
 
   beforeEach(() => {

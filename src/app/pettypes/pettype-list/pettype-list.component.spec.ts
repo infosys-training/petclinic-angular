@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PettypeListComponent } from './pettype-list.component';
 import { PetTypeService } from '../pettype.service';
@@ -27,7 +27,7 @@ describe('PettypeListComponent', () => {
   let testPettypes: PetType[];
   let responseStatus: number;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [FormsModule, PettypeListComponent],
@@ -37,7 +37,7 @@ describe('PettypeListComponent', () => {
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
       ],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PettypeListComponent);

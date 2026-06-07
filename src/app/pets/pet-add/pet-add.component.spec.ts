@@ -22,7 +22,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { PetAddComponent } from './pet-add.component';
@@ -65,7 +65,7 @@ describe('PetAddComponent', () => {
   let testPet: Pet;
   let spy: Spy;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [
@@ -82,7 +82,7 @@ describe('PetAddComponent', () => {
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
       ],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PetAddComponent);
@@ -100,9 +100,9 @@ describe('PetAddComponent', () => {
         address: '110 W. Liberty St.',
         city: 'Madison',
         telephone: '6085551023',
-        pets: null,
+        pets: [],
       },
-      visits: null,
+      visits: [],
     };
     petService = fixture.debugElement.injector.get(PetService);
     spy = spyOn(petService, 'getPetById').and.returnValue(of(testPet));

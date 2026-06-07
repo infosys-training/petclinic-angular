@@ -22,7 +22,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { VisitListComponent } from './visit-list.component';
@@ -50,7 +50,7 @@ describe('VisitListComponent', () => {
   let spy: Spy;
   let responseStatus: number;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [FormsModule, VisitListComponent],
@@ -60,7 +60,7 @@ describe('VisitListComponent', () => {
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
       ],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(VisitListComponent);
@@ -78,9 +78,9 @@ describe('VisitListComponent', () => {
         address: '110 W. Liberty St.',
         city: 'Madison',
         telephone: '6085551023',
-        pets: null,
+        pets: [],
       },
-      visits: null,
+      visits: [],
     };
     testVisits = [
       {
