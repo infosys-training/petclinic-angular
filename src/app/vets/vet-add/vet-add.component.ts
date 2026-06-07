@@ -20,32 +20,32 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Specialty } from "../../specialties/specialty";
-import { SpecialtyService } from "../../specialties/specialty.service";
-import { Vet } from "../vet";
-import { Router } from "@angular/router";
-import { VetService } from "../vet.service";
-import { FormsModule } from "@angular/forms";
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Specialty } from '../../specialties/specialty';
+import { SpecialtyService } from '../../specialties/specialty.service';
+import { Vet } from '../vet';
+import { Router } from '@angular/router';
+import { VetService } from '../vet.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: "app-vet-add",
-  templateUrl: "./vet-add.component.html",
-  styleUrls: ["./vet-add.component.css"],
+  selector: 'app-vet-add',
+  templateUrl: './vet-add.component.html',
+  styleUrls: ['./vet-add.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule],
 })
 export class VetAddComponent implements OnInit {
+  private specialtyService = inject(SpecialtyService);
+  private vetService = inject(VetService);
+  private router = inject(Router);
+
   vet: Vet;
   specialtiesList: Specialty[];
   selectedSpecialty: Specialty;
   errorMessage: string;
 
-  constructor(
-    private specialtyService: SpecialtyService,
-    private vetService: VetService,
-    private router: Router,
-  ) {
+  constructor() {
     this.vet = {} as Vet;
     this.selectedSpecialty = {} as Specialty;
     this.specialtiesList = [];
@@ -74,6 +74,6 @@ export class VetAddComponent implements OnInit {
   }
 
   gotoVetList() {
-    this.router.navigate(["/vets"]);
+    this.router.navigate(['/vets']);
   }
 }

@@ -20,29 +20,29 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Visit } from "../visit";
-import { Pet } from "../../pets/pet";
-import { Owner } from "../../owners/owner";
-import { PetType } from "../../pettypes/pettype";
-import { VisitService } from "../visit.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Visit } from '../visit';
+import { Pet } from '../../pets/pet';
+import { Owner } from '../../owners/owner';
+import { PetType } from '../../pettypes/pettype';
+import { VisitService } from '../visit.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import moment from "moment";
-import { OwnerService } from "../../owners/owner.service";
-import { PetService } from "../../pets/pet.service";
-import { FormsModule } from "@angular/forms";
+import moment from 'moment';
+import { OwnerService } from '../../owners/owner.service';
+import { PetService } from '../../pets/pet.service';
+import { FormsModule } from '@angular/forms';
 import {
   MatDatepickerInput,
   MatDatepickerToggle,
   MatDatepicker,
-} from "@angular/material/datepicker";
-import { DatePipe } from "@angular/common";
+} from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: "app-visit-edit",
-  templateUrl: "./visit-edit.component.html",
-  styleUrls: ["./visit-edit.component.css"],
+  selector: 'app-visit-edit',
+  templateUrl: './visit-edit.component.html',
+  styleUrls: ['./visit-edit.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     FormsModule,
@@ -53,6 +53,12 @@ import { DatePipe } from "@angular/common";
   ],
 })
 export class VisitEditComponent implements OnInit {
+  private visitService = inject(VisitService);
+  private petService = inject(PetService);
+  private ownerService = inject(OwnerService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
   visit: Visit;
   currentPet: Pet;
   currentOwner: Owner;
@@ -60,13 +66,7 @@ export class VisitEditComponent implements OnInit {
   updateSuccess = false;
   errorMessage: string;
 
-  constructor(
-    private visitService: VisitService,
-    private petService: PetService,
-    private ownerService: OwnerService,
-    private route: ActivatedRoute,
-    private router: Router,
-  ) {
+  constructor() {
     this.visit = {} as Visit;
     this.currentPet = {} as Pet;
     this.currentOwner = {} as Owner;
@@ -94,7 +94,7 @@ export class VisitEditComponent implements OnInit {
     visit.pet = this.currentPet;
 
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
-    visit.date = moment(visit.date).format("YYYY-MM-DD");
+    visit.date = moment(visit.date).format('YYYY-MM-DD');
 
     this.visitService.updateVisit(visit.id.toString(), visit).subscribe(
       (res) => this.gotoOwnerDetail(),
@@ -103,6 +103,6 @@ export class VisitEditComponent implements OnInit {
   }
 
   gotoOwnerDetail() {
-    this.router.navigate(["/owners", this.currentOwner.id]);
+    this.router.navigate(['/owners', this.currentOwner.id]);
   }
 }

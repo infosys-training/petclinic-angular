@@ -22,16 +22,16 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { VetListComponent } from "./vet-list.component";
-import { FormsModule } from "@angular/forms";
-import { VetService } from "../vet.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ActivatedRouteStub, RouterStub } from "../../testing/router-stubs";
-import { Vet } from "../vet";
-import { Observable, of } from "rxjs/index";
+import { VetListComponent } from './vet-list.component';
+import { FormsModule } from '@angular/forms';
+import { VetService } from '../vet.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
+import { Vet } from '../vet';
+import { Observable, of } from 'rxjs/index';
 
 class VetServiceStub {
   getVets(): Observable<Vet[]> {
@@ -39,7 +39,7 @@ class VetServiceStub {
   }
 }
 
-describe("VetListComponent", () => {
+describe('VetListComponent', () => {
   let component: VetListComponent;
   let fixture: ComponentFixture<VetListComponent>;
   let vetService: VetService;
@@ -63,7 +63,7 @@ describe("VetListComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

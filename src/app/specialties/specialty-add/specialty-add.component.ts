@@ -16,33 +16,28 @@
  *
  */
 
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild,
-  ChangeDetectionStrategy,
-} from "@angular/core";
-import { NgForm, FormsModule } from "@angular/forms";
-import { Specialty } from "../specialty";
-import { SpecialtyService } from "../specialty.service";
+import { Component, EventEmitter, OnInit, Output, ViewChild, ChangeDetectionStrategy, inject } from '@angular/core';
+import { NgForm, FormsModule } from '@angular/forms';
+import { Specialty } from '../specialty';
+import { SpecialtyService } from '../specialty.service';
 
 @Component({
-  selector: "app-specialty-add",
-  templateUrl: "./specialty-add.component.html",
-  styleUrls: ["./specialty-add.component.css"],
+  selector: 'app-specialty-add',
+  templateUrl: './specialty-add.component.html',
+  styleUrls: ['./specialty-add.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule],
 })
 export class SpecialtyAddComponent implements OnInit {
-  @ViewChild("specialityForm", { static: true }) specialityForm: NgForm;
+  private specialtyService = inject(SpecialtyService);
+
+  @ViewChild('specialityForm', { static: true }) specialityForm: NgForm;
   speciality: Specialty;
   addedSuccess = false;
   errorMessage: string;
   @Output() newSpeciality = new EventEmitter<Specialty>();
 
-  constructor(private specialtyService: SpecialtyService) {
+  constructor() {
     this.speciality = {} as Specialty;
   }
 

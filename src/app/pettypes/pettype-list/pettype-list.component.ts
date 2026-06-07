@@ -1,30 +1,30 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { PetType } from "../pettype";
-import { Router } from "@angular/router";
-import { PetTypeService } from "../pettype.service";
-import { Specialty } from "../../specialties/specialty";
-import { finalize } from "rxjs/operators";
-import { FormsModule } from "@angular/forms";
-import { PettypeAddComponent } from "../pettype-add/pettype-add.component";
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { PetType } from '../pettype';
+import { Router } from '@angular/router';
+import { PetTypeService } from '../pettype.service';
+import { Specialty } from '../../specialties/specialty';
+import { finalize } from 'rxjs/operators';
+import { FormsModule } from '@angular/forms';
+import { PettypeAddComponent } from '../pettype-add/pettype-add.component';
 
 @Component({
-  selector: "app-pettype-list",
-  templateUrl: "./pettype-list.component.html",
-  styleUrls: ["./pettype-list.component.css"],
+  selector: 'app-pettype-list',
+  templateUrl: './pettype-list.component.html',
+  styleUrls: ['./pettype-list.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, PettypeAddComponent],
 })
 export class PettypeListComponent implements OnInit {
+  private pettypeService = inject(PetTypeService);
+  private router = inject(Router);
+
   pettypes: PetType[];
   errorMessage: string;
   responseStatus: number;
   isPetTypesDataReceived: boolean = false;
   isInsert = false;
 
-  constructor(
-    private pettypeService: PetTypeService,
-    private router: Router,
-  ) {
+  constructor() {
     this.pettypes = [] as PetType[];
   }
 
@@ -64,10 +64,10 @@ export class PettypeListComponent implements OnInit {
   }
 
   showEditPettypeComponent(updatedPetType: PetType) {
-    this.router.navigate(["/pettypes", updatedPetType.id.toString(), "edit"]);
+    this.router.navigate(['/pettypes', updatedPetType.id.toString(), 'edit']);
   }
 
   gotoHome() {
-    this.router.navigate(["/welcome"]);
+    this.router.navigate(['/welcome']);
   }
 }

@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { PettypeListComponent } from "./pettype-list.component";
-import { PetTypeService } from "../pettype.service";
-import { PetType } from "../pettype";
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ActivatedRouteStub, RouterStub } from "../../testing/router-stubs";
-import { FormsModule } from "@angular/forms";
-import { Observable, of } from "rxjs/index";
+import { PettypeListComponent } from './pettype-list.component';
+import { PetTypeService } from '../pettype.service';
+import { PetType } from '../pettype';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
+import { FormsModule } from '@angular/forms';
+import { Observable, of } from 'rxjs/index';
 import Spy = jasmine.Spy;
 
 class PetTypeServiceStub {
@@ -19,7 +19,7 @@ class PetTypeServiceStub {
   }
 }
 
-describe("PettypeListComponent", () => {
+describe('PettypeListComponent', () => {
   let component: PettypeListComponent;
   let fixture: ComponentFixture<PettypeListComponent>;
   let pettypeService: PetTypeService;
@@ -46,7 +46,7 @@ describe("PettypeListComponent", () => {
     testPettypes = [
       {
         id: 1,
-        name: "test",
+        name: 'test',
       },
     ];
 
@@ -54,20 +54,20 @@ describe("PettypeListComponent", () => {
     responseStatus = 204; // success delete return NO_CONTENT
     component.pettypes = testPettypes;
 
-    spy = spyOn(pettypeService, "deletePetType").and.returnValue(
+    spy = spyOn(pettypeService, 'deletePetType').and.returnValue(
       of(responseStatus),
     );
 
     fixture.detectChanges();
   });
 
-  it("should create PettypeListComponent", () => {
+  it('should create PettypeListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it("should call deletePetType() method", () => {
+  it('should call deletePetType() method', () => {
     fixture.detectChanges();
     component.deletePettype(component.pettypes[0]);
-    expect(spy.calls.any()).toBe(true, "deletePetType called");
+    expect(spy.calls.any()).toBe(true, 'deletePetType called');
   });
 });

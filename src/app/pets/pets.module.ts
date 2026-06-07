@@ -20,36 +20,36 @@
  * @author Vitaliy Fedoriv
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { PetsRoutingModule } from "./pets-routing.module";
-import { PetListComponent } from "./pet-list/pet-list.component";
-import { PetService } from "./pet.service";
-import { VisitsModule } from "../visits/visits.module";
-import { PetEditComponent } from "./pet-edit/pet-edit.component";
-import { FormsModule } from "@angular/forms";
-import { PetAddComponent } from "./pet-add/pet-add.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PetsRoutingModule } from './pets-routing.module';
+import { PetListComponent } from './pet-list/pet-list.component';
+import { PetService } from './pet.service';
+import { VisitsModule } from '../visits/visits.module';
+import { PetEditComponent } from './pet-edit/pet-edit.component';
+import { FormsModule } from '@angular/forms';
+import { PetAddComponent } from './pet-add/pet-add.component';
 
 import {
   MatMomentDateModule,
   MomentDateAdapter,
-} from "@angular/material-moment-adapter";
-import { MatDatepickerModule } from "@angular/material/datepicker";
+} from '@angular/material-moment-adapter';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   DateAdapter,
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
-} from "@angular/material/core";
+} from '@angular/material/core';
 
 export const MY_DATE_FORMATS = {
   parse: {
-    dateInput: "YYYY/MM/DD",
+    dateInput: 'YYYY/MM/DD',
   },
   display: {
-    dateInput: "YYYY/MM/DD",
-    monthYearLabel: "MM YYYY",
-    dateA11yLabel: "YYYY/MM/DD",
-    monthYearA11yLabel: "MM YYYY",
+    dateInput: 'YYYY/MM/DD',
+    monthYearLabel: 'MM YYYY',
+    dateA11yLabel: 'YYYY/MM/DD',
+    monthYearA11yLabel: 'MM YYYY',
   },
 };
 

@@ -20,16 +20,16 @@
  * @author Vitaliy Fedoriv
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatSelectModule } from "@angular/material/select";
-import { VetListComponent } from "./vet-list/vet-list.component";
-import { VetService } from "./vet.service";
-import { VetsRoutingModule } from "./vets-routing.module";
-import { VetEditComponent } from "./vet-edit/vet-edit.component";
-import { VetAddComponent } from "./vet-add/vet-add.component";
-import { VetResolver } from "./vet-resolver";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { VetListComponent } from './vet-list/vet-list.component';
+import { VetService } from './vet.service';
+import { VetsRoutingModule } from './vets-routing.module';
+import { VetEditComponent } from './vet-edit/vet-edit.component';
+import { VetAddComponent } from './vet-add/vet-add.component';
+import { VetResolver } from './vet-resolver';
 
 @NgModule({
   imports: [

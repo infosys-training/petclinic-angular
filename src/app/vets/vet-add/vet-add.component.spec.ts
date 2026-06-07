@@ -22,13 +22,13 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { VetAddComponent } from "./vet-add.component";
-import { FormsModule } from "@angular/forms";
+import { VetAddComponent } from './vet-add.component';
+import { FormsModule } from '@angular/forms';
 
-describe("VetAddComponent", () => {
+describe('VetAddComponent', () => {
   let component: VetAddComponent;
   let fixture: ComponentFixture<VetAddComponent>;
 

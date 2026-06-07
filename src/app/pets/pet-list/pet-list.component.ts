@@ -20,41 +20,36 @@
  * @author Vitaliy Fedoriv
  */
 
-import {
-  Component,
-  Input,
-  OnInit,
-  ChangeDetectionStrategy,
-} from "@angular/core";
-import { Router } from "@angular/router";
-import { PetService } from "../pet.service";
-import { Pet } from "../pet";
-import { VisitListComponent } from "../../visits/visit-list/visit-list.component";
+import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { PetService } from '../pet.service';
+import { Pet } from '../pet';
+import { VisitListComponent } from '../../visits/visit-list/visit-list.component';
 
 @Component({
-  selector: "app-pet-list",
-  templateUrl: "./pet-list.component.html",
-  styleUrls: ["./pet-list.component.css"],
+  selector: 'app-pet-list',
+  templateUrl: './pet-list.component.html',
+  styleUrls: ['./pet-list.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [VisitListComponent],
 })
 export class PetListComponent implements OnInit {
+  private router = inject(Router);
+  private petService = inject(PetService);
+
   errorMessage: string;
   @Input() pet: Pet;
   responseStatus: number;
   deleteSuccess = false;
 
-  constructor(
-    private router: Router,
-    private petService: PetService,
-  ) {
+  constructor() {
     this.pet = {} as Pet;
   }
 
   ngOnInit() {}
 
   editPet(pet: Pet) {
-    this.router.navigate(["/pets", pet.id, "edit"]);
+    this.router.navigate(['/pets', pet.id, 'edit']);
   }
 
   deletePet(pet: Pet) {
@@ -68,6 +63,6 @@ export class PetListComponent implements OnInit {
   }
 
   addVisit(pet: Pet) {
-    this.router.navigate(["/pets", pet.id, "visits", "add"]);
+    this.router.navigate(['/pets', pet.id, 'visits', 'add']);
   }
 }

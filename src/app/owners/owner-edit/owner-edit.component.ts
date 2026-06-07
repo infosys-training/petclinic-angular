@@ -20,28 +20,28 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { OwnerService } from "../owner.service";
-import { Owner } from "../owner";
-import { ActivatedRoute, Router } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { OwnerService } from '../owner.service';
+import { Owner } from '../owner';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: "app-owner-edit",
-  templateUrl: "./owner-edit.component.html",
-  styleUrls: ["./owner-edit.component.css"],
+  selector: 'app-owner-edit',
+  templateUrl: './owner-edit.component.html',
+  styleUrls: ['./owner-edit.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule],
 })
 export class OwnerEditComponent implements OnInit {
+  private ownerService = inject(OwnerService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
   owner: Owner;
   errorMessage: string; // server error message
   ownerId: number;
-  constructor(
-    private ownerService: OwnerService,
-    private route: ActivatedRoute,
-    private router: Router,
-  ) {
+  constructor() {
     this.owner = {} as Owner;
   }
 
@@ -63,7 +63,7 @@ export class OwnerEditComponent implements OnInit {
   }
 
   gotoOwnerDetail(owner: Owner) {
-    this.errorMessage = "";
-    this.router.navigate(["/owners", owner.id]);
+    this.errorMessage = '';
+    this.router.navigate(['/owners', owner.id]);
   }
 }

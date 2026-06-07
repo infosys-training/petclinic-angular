@@ -22,21 +22,21 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
-import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { PetEditComponent } from "./pet-edit.component";
-import { FormsModule } from "@angular/forms";
-import { PetService } from "../pet.service";
-import { OwnerService } from "../../owners/owner.service";
-import { PetTypeService } from "../../pettypes/pettype.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ActivatedRouteStub, RouterStub } from "../../testing/router-stubs";
-import { Pet } from "../pet";
-import { Observable, of } from "rxjs";
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { PetType } from "../../pettypes/pettype";
+import { PetEditComponent } from './pet-edit.component';
+import { FormsModule } from '@angular/forms';
+import { PetService } from '../pet.service';
+import { OwnerService } from '../../owners/owner.service';
+import { PetTypeService } from '../../pettypes/pettype.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
+import { Pet } from '../pet';
+import { Observable, of } from 'rxjs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { PetType } from '../../pettypes/pettype';
 import Spy = jasmine.Spy;
 
 class OwnerServiceStub {}
@@ -56,7 +56,7 @@ class PetTypeServiceStub {
   }
 }
 
-describe("PetEditComponent", () => {
+describe('PetEditComponent', () => {
   let component: PetEditComponent;
   let fixture: ComponentFixture<PetEditComponent>;
   let petService: PetService;
@@ -87,28 +87,28 @@ describe("PetEditComponent", () => {
     component = fixture.componentInstance;
     testPet = {
       id: 1,
-      name: "Leo",
-      birthDate: "2010-09-07",
-      type: { id: 1, name: "cat" },
+      name: 'Leo',
+      birthDate: '2010-09-07',
+      type: { id: 1, name: 'cat' },
       ownerId: 1,
       owner: {
         id: 1,
-        firstName: "George",
-        lastName: "Franklin",
-        address: "110 W. Liberty St.",
-        city: "Madison",
-        telephone: "6085551023",
+        firstName: 'George',
+        lastName: 'Franklin',
+        address: '110 W. Liberty St.',
+        city: 'Madison',
+        telephone: '6085551023',
         pets: null,
       },
       visits: null,
     };
     petService = fixture.debugElement.injector.get(PetService);
-    spy = spyOn(petService, "updatePet").and.returnValue(of(testPet));
+    spy = spyOn(petService, 'updatePet').and.returnValue(of(testPet));
 
     fixture.detectChanges();
   });
 
-  it("should create PetEditComponent", () => {
+  it('should create PetEditComponent', () => {
     expect(component).toBeTruthy();
   });
 });

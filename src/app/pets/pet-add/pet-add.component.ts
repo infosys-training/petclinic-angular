@@ -20,33 +20,28 @@
  * @author Vitaliy Fedoriv
  */
 
-import {
-  Component,
-  Input,
-  OnInit,
-  ChangeDetectionStrategy,
-} from "@angular/core";
-import { Pet } from "../pet";
-import { PetType } from "../../pettypes/pettype";
-import { Owner } from "../../owners/owner";
-import { ActivatedRoute, Router } from "@angular/router";
-import { PetTypeService } from "../../pettypes/pettype.service";
-import { PetService } from "../pet.service";
-import { OwnerService } from "../../owners/owner.service";
+import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Pet } from '../pet';
+import { PetType } from '../../pettypes/pettype';
+import { Owner } from '../../owners/owner';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PetTypeService } from '../../pettypes/pettype.service';
+import { PetService } from '../pet.service';
+import { OwnerService } from '../../owners/owner.service';
 
-import moment from "moment";
-import { FormsModule } from "@angular/forms";
+import moment from 'moment';
+import { FormsModule } from '@angular/forms';
 import {
   MatDatepickerInput,
   MatDatepickerToggle,
   MatDatepicker,
-} from "@angular/material/datepicker";
-import { DatePipe } from "@angular/common";
+} from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: "app-pet-add",
-  templateUrl: "./pet-add.component.html",
-  styleUrls: ["./pet-add.component.css"],
+  selector: 'app-pet-add',
+  templateUrl: './pet-add.component.html',
+  styleUrls: ['./pet-add.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     FormsModule,
@@ -57,6 +52,12 @@ import { DatePipe } from "@angular/common";
   ],
 })
 export class PetAddComponent implements OnInit {
+  private ownerService = inject(OwnerService);
+  private petService = inject(PetService);
+  private petTypeService = inject(PetTypeService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
   pet: Pet;
   @Input() currentType: PetType;
   currentOwner: Owner;
@@ -64,13 +65,7 @@ export class PetAddComponent implements OnInit {
   addedSuccess = false;
   errorMessage: string;
 
-  constructor(
-    private ownerService: OwnerService,
-    private petService: PetService,
-    private petTypeService: PetTypeService,
-    private router: Router,
-    private route: ActivatedRoute,
-  ) {
+  constructor() {
     this.pet = {} as Pet;
     this.currentOwner = {} as Owner;
     this.currentType = {} as PetType;
@@ -96,7 +91,7 @@ export class PetAddComponent implements OnInit {
     pet.id = undefined as any;
     pet.owner = this.currentOwner;
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
-    pet.birthDate = moment(pet.birthDate).format("YYYY-MM-DD");
+    pet.birthDate = moment(pet.birthDate).format('YYYY-MM-DD');
     this.petService.addPet(pet).subscribe(
       (newPet) => {
         this.pet = newPet;
@@ -108,6 +103,6 @@ export class PetAddComponent implements OnInit {
   }
 
   gotoOwnerDetail() {
-    this.router.navigate(["/owners", this.currentOwner.id]);
+    this.router.navigate(['/owners', this.currentOwner.id]);
   }
 }

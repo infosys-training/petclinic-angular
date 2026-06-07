@@ -20,32 +20,32 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Specialty } from "../specialty";
-import { SpecialtyService } from "../specialty.service";
-import { Router } from "@angular/router";
-import { finalize } from "rxjs/operators";
-import { FormsModule } from "@angular/forms";
-import { SpecialtyAddComponent } from "../specialty-add/specialty-add.component";
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Specialty } from '../specialty';
+import { SpecialtyService } from '../specialty.service';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
+import { FormsModule } from '@angular/forms';
+import { SpecialtyAddComponent } from '../specialty-add/specialty-add.component';
 
 @Component({
-  selector: "app-specialty-list",
-  templateUrl: "./specialty-list.component.html",
-  styleUrls: ["./specialty-list.component.css"],
+  selector: 'app-specialty-list',
+  templateUrl: './specialty-list.component.html',
+  styleUrls: ['./specialty-list.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, SpecialtyAddComponent],
 })
 export class SpecialtyListComponent implements OnInit {
+  private specService = inject(SpecialtyService);
+  private router = inject(Router);
+
   specialties: Specialty[];
   errorMessage: string;
   responseStatus: number;
   isInsert = false;
   isSpecialitiesDataReceived: boolean = false;
 
-  constructor(
-    private specService: SpecialtyService,
-    private router: Router,
-  ) {
+  constructor() {
     this.specialties = [];
   }
 
@@ -86,13 +86,13 @@ export class SpecialtyListComponent implements OnInit {
 
   showEditSpecialtyComponent(updatedSpecialty: Specialty) {
     this.router.navigate([
-      "/specialties",
+      '/specialties',
       updatedSpecialty.id.toString(),
-      "edit",
+      'edit',
     ]);
   }
 
   gotoHome() {
-    this.router.navigate(["/welcome"]);
+    this.router.navigate(['/welcome']);
   }
 }

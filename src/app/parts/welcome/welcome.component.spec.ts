@@ -22,11 +22,11 @@
  * @author Vitaliy Fedoriv
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { WelcomeComponent } from "./welcome.component";
+import { WelcomeComponent } from './welcome.component';
 
-describe("WelcomeComponent", () => {
+describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
   let fixture: ComponentFixture<WelcomeComponent>;
 
@@ -42,7 +42,7 @@ describe("WelcomeComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create WelcomeComponent", () => {
+  it('should create WelcomeComponent', () => {
     expect(component).toBeTruthy();
   });
 });

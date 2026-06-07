@@ -20,28 +20,28 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { OwnerService } from "../owner.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Owner } from "../owner";
-import { PetListComponent } from "../../pets/pet-list/pet-list.component";
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { OwnerService } from '../owner.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Owner } from '../owner';
+import { PetListComponent } from '../../pets/pet-list/pet-list.component';
 
 @Component({
-  selector: "app-owner-detail",
-  templateUrl: "./owner-detail.component.html",
-  styleUrls: ["./owner-detail.component.css"],
+  selector: 'app-owner-detail',
+  templateUrl: './owner-detail.component.html',
+  styleUrls: ['./owner-detail.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [PetListComponent],
 })
 export class OwnerDetailComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private ownerService = inject(OwnerService);
+
   errorMessage: string;
   owner: Owner;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private ownerService: OwnerService,
-  ) {
+  constructor() {
     this.owner = {} as Owner;
   }
 
@@ -54,14 +54,14 @@ export class OwnerDetailComponent implements OnInit {
   }
 
   gotoOwnersList() {
-    this.router.navigate(["/owners"]);
+    this.router.navigate(['/owners']);
   }
 
   editOwner() {
-    this.router.navigate(["/owners", this.owner.id, "edit"]);
+    this.router.navigate(['/owners', this.owner.id, 'edit']);
   }
 
   addPet(owner: Owner) {
-    this.router.navigate(["/owners", owner.id, "pets", "add"]);
+    this.router.navigate(['/owners', owner.id, 'pets', 'add']);
   }
 }
