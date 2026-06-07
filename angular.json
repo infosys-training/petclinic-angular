@@ -9,35 +9,32 @@
       "projectType": "application",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist",
+            "outputPath": {
+              "base": "dist"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "assets": [
               "src/assets",
               "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "node_modules/tether/dist/js/tether.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
-            ],
-            "vendorChunk": true,
+            "scripts": [],
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
             "allowedCommonJsDependencies": [
               "moment"
-            ]
+            ],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -52,8 +49,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -96,13 +91,8 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "node_modules/tether/dist/js/tether.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
-            ],
+            "scripts": [],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "assets": [
