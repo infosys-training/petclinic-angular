@@ -1,7 +1,9 @@
 // @ts-check
 const eslint = require('@eslint/js');
 const tseslint = require('typescript-eslint');
-const angular = require('angular-eslint');
+const angularEslint = require('@angular-eslint/eslint-plugin');
+const angularTemplateEslint = require('@angular-eslint/eslint-plugin-template');
+const angularTemplateParser = require('@angular-eslint/template-parser');
 
 module.exports = tseslint.config(
   {
@@ -9,9 +11,10 @@ module.exports = tseslint.config(
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
-      ...angular.configs.tsRecommended,
     ],
-    processor: angular.processInlineTemplates,
+    plugins: {
+      '@angular-eslint': angularEslint,
+    },
     rules: {
       '@angular-eslint/component-selector': [
         'error',
@@ -50,9 +53,12 @@ module.exports = tseslint.config(
   },
   {
     files: ['**/*.html'],
-    extends: [
-      ...angular.configs.templateRecommended,
-    ],
+    plugins: {
+      '@angular-eslint/template': angularTemplateEslint,
+    },
+    languageOptions: {
+      parser: angularTemplateParser,
+    },
     rules: {
       '@angular-eslint/template/prefer-control-flow': 'off',
     },
