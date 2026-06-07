@@ -27,19 +27,24 @@ import {NavigationExtras} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 
 @Directive({
+  standalone: false,
   selector: '[appRouterLink]',
 })
 export class RouterLinkStubDirective {
   @Input() linkParams: any;
   navigatedTo: any = null;
 
-  @HostListener('click', ['$event'])
+  @HostListener('click')
   onClick() {
     this.navigatedTo = this.linkParams;
   }
 }
 
-@Component({selector: 'app-router-outlet', template: ''})
+@Component({
+  standalone: false,
+  selector: 'app-router-outlet',
+  template: ''
+})
 export class RouterOutletStubComponent {
 }
 
