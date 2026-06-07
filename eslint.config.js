@@ -15,6 +15,7 @@ module.exports = tseslint.config(
     plugins: {
       '@angular-eslint': angularEslint,
     },
+    processor: angularTemplateEslint.processors['extract-inline-html'],
     rules: {
       '@angular-eslint/component-selector': [
         'error',

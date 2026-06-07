@@ -4,7 +4,6 @@ import {
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import {
-  HttpErrorResponse,
   HttpResponse,
   provideHttpClient,
 } from '@angular/common/http';
@@ -13,7 +12,6 @@ import { HttpErrorHandler } from '../error.service';
 
 import { OwnerService } from './owner.service';
 import { Owner } from './owner';
-import { defer } from 'rxjs';
 
 describe('OwnerService', () => {
   let httpTestingController: HttpTestingController;
@@ -127,8 +125,8 @@ describe('OwnerService', () => {
   it('search for delete Owner', () => {
     ownerService.getOwnerById(1).subscribe({
       next: () => fail('Should have failed with 404 error'),
-      error: (error: HttpErrorResponse) => {
-        expect(error.status).toEqual(404);
+      error: (error: string) => {
+        expect(error).toContain('404');
       }
     });
 
