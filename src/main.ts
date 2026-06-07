@@ -16,12 +16,9 @@
  *
  */
 
-// import './polyfills.ts';
-
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import {
   enableProdMode,
-  provideZoneChangeDetection,
+  provideZonelessChangeDetection,
   importProvidersFrom,
 } from "@angular/core";
 import { environment } from "./environments/environment";
@@ -32,7 +29,7 @@ import {
   withXhr,
   withInterceptorsFromDi,
 } from "@angular/common/http";
-import { BrowserModule, bootstrapApplication } from "@angular/platform-browser";
+import { bootstrapApplication } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { OwnersModule } from "./app/owners/owners.module";
 import { PetsModule } from "./app/pets/pets.module";
@@ -40,7 +37,7 @@ import { VisitsModule } from "./app/visits/visits.module";
 import { PetTypesModule } from "./app/pettypes/pettypes.module";
 import { VetsModule } from "./app/vets/vets.module";
 import { SpecialtiesModule } from "./app/specialties/specialties.module";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { provideAnimations } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app/app-routing.module";
 import { AppComponent } from "./app/app.component";
 
@@ -50,8 +47,8 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideZonelessChangeDetection(),
     importProvidersFrom(
-      BrowserModule,
       FormsModule,
       OwnersModule,
       PetsModule,
@@ -59,9 +56,9 @@ bootstrapApplication(AppComponent, {
       PetTypesModule,
       VetsModule,
       SpecialtiesModule,
-      BrowserAnimationsModule,
       AppRoutingModule,
     ),
+    provideAnimations(),
     HttpErrorHandler,
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
   ],
