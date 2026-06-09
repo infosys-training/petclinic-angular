@@ -32,10 +32,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ActivatedRouteStub, RouterStub } from '../../testing/router-stubs';
 import { Pet } from '../pet';
 import { Observable, of } from 'rxjs';
+import { VisitService } from '../../visits/visit.service';
 import Spy = jasmine.Spy;
 
 class PetServiceStub {
   deletePet(petId: string): Observable<number> {
+    return of();
+  }
+}
+
+class VisitServiceStub {
+  deleteVisit(visitId: string): Observable<number> {
     return of();
   }
 }
@@ -54,6 +61,7 @@ describe('PetListComponent', () => {
     imports: [FormsModule, PetListComponent],
     providers: [
         { provide: PetService, useClass: PetServiceStub },
+        { provide: VisitService, useClass: VisitServiceStub },
         { provide: Router, useClass: RouterStub },
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
     ],

@@ -34,7 +34,6 @@ import {Owner} from '../owner';
 import {Observable, of} from 'rxjs';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CommonModule} from '@angular/common';
-import {PartsModule} from '../../parts/parts.module';
 import {ActivatedRouteStub} from '../../testing/router-stubs';
 import {OwnerDetailComponent} from '../owner-detail/owner-detail.component';
 import {OwnersModule} from '../owners.module';
@@ -75,7 +74,7 @@ describe('OwnerListComponent', () => {
     TestBed.configureTestingModule({
     declarations: [DummyComponent],
     schemas: [NO_ERRORS_SCHEMA],
-    imports: [CommonModule, FormsModule, PartsModule, OwnersModule,
+    imports: [CommonModule, FormsModule, OwnersModule,
         RouterTestingModule.withRoutes([{ path: 'owners', component: OwnerListComponent },
             { path: 'owners/add', component: OwnerAddComponent },
             { path: 'owners/:id', component: OwnerDetailComponent },
