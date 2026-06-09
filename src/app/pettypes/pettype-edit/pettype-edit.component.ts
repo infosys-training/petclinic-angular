@@ -30,7 +30,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-pettype-edit',
     templateUrl: './pettype-edit.component.html',
     styleUrls: ['./pettype-edit.component.css'],
-    standalone: true,
     imports: [FormsModule]
 })
 export class PettypeEditComponent implements OnInit {

@@ -32,7 +32,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-specialty-list',
     templateUrl: './specialty-list.component.html',
     styleUrls: ['./specialty-list.component.css'],
-    standalone: true,
     imports: [FormsModule, SpecialtyAddComponent]
 })
 export class SpecialtyListComponent implements OnInit {

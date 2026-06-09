@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-pettype-add',
     templateUrl: './pettype-add.component.html',
     styleUrls: ['./pettype-add.component.css'],
-    standalone: true,
     imports: [FormsModule]
 })
 export class PettypeAddComponent implements OnInit {

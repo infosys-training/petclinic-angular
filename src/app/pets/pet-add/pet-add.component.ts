@@ -39,7 +39,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-pet-add',
     templateUrl: './pet-add.component.html',
     styleUrls: ['./pet-add.component.css'],
-    standalone: true,
     imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, DatePipe]
 })
 export class PetAddComponent implements OnInit {

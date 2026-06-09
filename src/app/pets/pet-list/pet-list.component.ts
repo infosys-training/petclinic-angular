@@ -31,7 +31,6 @@ import { VisitListComponent } from '../../visits/visit-list/visit-list.component
     selector: 'app-pet-list',
     templateUrl: './pet-list.component.html',
     styleUrls: ['./pet-list.component.css'],
-    standalone: true,
     imports: [VisitListComponent]
 })
 export class PetListComponent implements OnInit {

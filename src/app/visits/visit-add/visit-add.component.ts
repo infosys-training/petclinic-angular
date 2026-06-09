@@ -40,7 +40,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-visit-add',
     templateUrl: './visit-add.component.html',
     styleUrls: ['./visit-add.component.css'],
-    standalone: true,
     imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, VisitListComponent, DatePipe]
 })
 export class VisitAddComponent implements OnInit {

@@ -30,7 +30,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-specialty-edit',
     templateUrl: './specialty-edit.component.html',
     styleUrls: ['./specialty-edit.component.css'],
-    standalone: true,
     imports: [FormsModule]
 })
 export class SpecialtyEditComponent implements OnInit {

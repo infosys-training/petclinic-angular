@@ -30,8 +30,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-owner-edit',
     templateUrl: './owner-edit.component.html',
     styleUrls: ['./owner-edit.component.css'],
-    standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule]
 })
 export class OwnerEditComponent implements OnInit {
   owner: Owner;

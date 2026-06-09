@@ -32,7 +32,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-vet-add',
     templateUrl: './vet-add.component.html',
     styleUrls: ['./vet-add.component.css'],
-    standalone: true,
     imports: [FormsModule]
 })
 export class VetAddComponent implements OnInit {

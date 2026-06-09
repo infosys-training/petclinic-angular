@@ -31,7 +31,6 @@ import { PetListComponent } from '../../pets/pet-list/pet-list.component';
     selector: 'app-owner-detail',
     templateUrl: './owner-detail.component.html',
     styleUrls: ['./owner-detail.component.css'],
-    standalone: true,
     imports: [PetListComponent]
 })
 export class OwnerDetailComponent implements OnInit {

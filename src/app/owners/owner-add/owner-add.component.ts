@@ -30,7 +30,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-owner-add',
     templateUrl: './owner-add.component.html',
     styleUrls: ['./owner-add.component.css'],
-    standalone: true,
     imports: [FormsModule]
 })
 export class OwnerAddComponent implements OnInit {

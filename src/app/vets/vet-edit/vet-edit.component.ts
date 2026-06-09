@@ -35,7 +35,6 @@ import { MatFormField } from '@angular/material/form-field';
     selector: 'app-vet-edit',
     templateUrl: './vet-edit.component.html',
     styleUrls: ['./vet-edit.component.css'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, MatFormField, MatSelect, MatOption]
 })
 export class VetEditComponent implements OnInit {

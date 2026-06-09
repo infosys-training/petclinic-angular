@@ -31,7 +31,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-owner-list',
     templateUrl: './owner-list.component.html',
     styleUrls: ['./owner-list.component.css'],
-    standalone: true,
     imports: [FormsModule, RouterLinkActive, RouterLink]
 })
 export class OwnerListComponent implements OnInit {

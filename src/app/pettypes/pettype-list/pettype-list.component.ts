@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-pettype-list',
     templateUrl: './pettype-list.component.html',
     styleUrls: ['./pettype-list.component.css'],
-    standalone: true,
     imports: [FormsModule, PettypeAddComponent]
 })
 export class PettypeListComponent implements OnInit {

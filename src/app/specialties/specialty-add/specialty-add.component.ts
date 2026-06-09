@@ -31,8 +31,7 @@ import { SpecialtyService } from '../specialty.service';
     selector: 'app-specialty-add',
     templateUrl: './specialty-add.component.html',
     styleUrls: ['./specialty-add.component.css'],
-    standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule]
 })
 export class SpecialtyAddComponent implements OnInit {
   @ViewChild('specialityForm', { static: true }) specialityForm: NgForm;

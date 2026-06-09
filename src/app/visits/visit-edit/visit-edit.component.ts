@@ -39,7 +39,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-visit-edit',
     templateUrl: './visit-edit.component.html',
     styleUrls: ['./visit-edit.component.css'],
-    standalone: true,
     imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, DatePipe]
 })
 export class VisitEditComponent implements OnInit {
