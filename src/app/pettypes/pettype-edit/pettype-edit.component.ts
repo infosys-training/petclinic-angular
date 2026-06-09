@@ -20,21 +20,21 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { PetType } from "../pettype";
-import { PetTypeService } from "../pettype.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { PetType } from '../pettype';
+import { PetTypeService } from '../pettype.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: "app-pettype-edit",
-  templateUrl: "./pettype-edit.component.html",
-  styleUrls: ["./pettype-edit.component.css"],
+  selector: 'app-pettype-edit',
+  templateUrl: './pettype-edit.component.html',
+  styleUrls: ['./pettype-edit.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class PettypeEditComponent implements OnInit {
   pettype: PetType;
-  errorMessage = "";
+  errorMessage = '';
 
   constructor(
     private pettypeService: PetTypeService,
@@ -55,7 +55,7 @@ export class PettypeEditComponent implements OnInit {
   onSubmit(pettype: PetType) {
     this.pettypeService.updatePetType(pettype.id.toString(), pettype).subscribe(
       (res) => {
-        console.log("update success");
+        console.log('update success');
         this.onBack();
       },
       (error) => (this.errorMessage = error as any),
@@ -63,6 +63,6 @@ export class PettypeEditComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(["/pettypes"]);
+    this.router.navigate(['/pettypes']);
   }
 }

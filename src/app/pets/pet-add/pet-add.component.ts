@@ -25,21 +25,21 @@ import {
   Input,
   OnInit,
   ChangeDetectionStrategy,
-} from "@angular/core";
-import { Pet } from "../pet";
-import { PetType } from "../../pettypes/pettype";
-import { Owner } from "../../owners/owner";
-import { ActivatedRoute, Router } from "@angular/router";
-import { PetTypeService } from "../../pettypes/pettype.service";
-import { PetService } from "../pet.service";
-import { OwnerService } from "../../owners/owner.service";
+} from '@angular/core';
+import { Pet } from '../pet';
+import { PetType } from '../../pettypes/pettype';
+import { Owner } from '../../owners/owner';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PetTypeService } from '../../pettypes/pettype.service';
+import { PetService } from '../pet.service';
+import { OwnerService } from '../../owners/owner.service';
 
-import moment from "moment";
+import moment from 'moment';
 
 @Component({
-  selector: "app-pet-add",
-  templateUrl: "./pet-add.component.html",
-  styleUrls: ["./pet-add.component.css"],
+  selector: 'app-pet-add',
+  templateUrl: './pet-add.component.html',
+  styleUrls: ['./pet-add.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
@@ -49,7 +49,7 @@ export class PetAddComponent implements OnInit {
   currentOwner: Owner;
   petTypes: PetType[];
   addedSuccess = false;
-  errorMessage = "";
+  errorMessage = '';
 
   constructor(
     private ownerService: OwnerService,
@@ -83,7 +83,7 @@ export class PetAddComponent implements OnInit {
     pet.id = undefined as any;
     pet.owner = this.currentOwner;
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
-    pet.birthDate = moment(pet.birthDate).format("YYYY-MM-DD");
+    pet.birthDate = moment(pet.birthDate).format('YYYY-MM-DD');
     this.petService.addPet(pet).subscribe(
       (newPet) => {
         this.pet = newPet;
@@ -95,6 +95,6 @@ export class PetAddComponent implements OnInit {
   }
 
   gotoOwnerDetail() {
-    this.router.navigate(["/owners", this.currentOwner.id]);
+    this.router.navigate(['/owners', this.currentOwner.id]);
   }
 }

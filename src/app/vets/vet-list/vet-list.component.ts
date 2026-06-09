@@ -20,22 +20,22 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Vet } from "../vet";
-import { VetService } from "../vet.service";
-import { Router } from "@angular/router";
-import { finalize } from "rxjs/operators";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Vet } from '../vet';
+import { VetService } from '../vet.service';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 
 @Component({
-  selector: "app-vet-list",
-  templateUrl: "./vet-list.component.html",
-  styleUrls: ["./vet-list.component.css"],
+  selector: 'app-vet-list',
+  templateUrl: './vet-list.component.html',
+  styleUrls: ['./vet-list.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class VetListComponent implements OnInit {
   vets: Vet[];
-  errorMessage = "";
+  errorMessage = '';
   responseStatus = 0;
   isVetDataReceived: boolean = false;
 
@@ -73,14 +73,14 @@ export class VetListComponent implements OnInit {
   }
 
   gotoHome() {
-    this.router.navigate(["/welcome"]);
+    this.router.navigate(['/welcome']);
   }
 
   addVet() {
-    this.router.navigate(["/vets/add"]);
+    this.router.navigate(['/vets/add']);
   }
 
   editVet(vet: Vet) {
-    this.router.navigate(["/vets", vet.id, "edit"]);
+    this.router.navigate(['/vets', vet.id, 'edit']);
   }
 }

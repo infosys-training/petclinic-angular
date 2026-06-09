@@ -4,20 +4,20 @@ import {
   OnInit,
   Output,
   ChangeDetectionStrategy,
-} from "@angular/core";
-import { PetType } from "../pettype";
-import { PetTypeService } from "../pettype.service";
+} from '@angular/core';
+import { PetType } from '../pettype';
+import { PetTypeService } from '../pettype.service';
 
 @Component({
-  selector: "app-pettype-add",
-  templateUrl: "./pettype-add.component.html",
-  styleUrls: ["./pettype-add.component.css"],
+  selector: 'app-pettype-add',
+  templateUrl: './pettype-add.component.html',
+  styleUrls: ['./pettype-add.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class PettypeAddComponent implements OnInit {
   pettype: PetType;
-  errorMessage = "";
+  errorMessage = '';
   @Output() newPetType = new EventEmitter<PetType>();
 
   constructor(private pettypeService: PetTypeService) {
