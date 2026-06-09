@@ -23,10 +23,19 @@
  */
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import {VetEditComponent} from './vet-edit.component';
 import {FormsModule} from '@angular/forms';
+import {SpecialtyService} from '../../specialties/specialty.service';
+import {VetService} from '../vet.service';
+import {HttpErrorHandler} from '../../error.service';
+import {Router, ActivatedRoute} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('VetEditComponent', () => {
   let component: VetEditComponent;
@@ -35,8 +44,17 @@ describe('VetEditComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [VetEditComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      imports: [FormsModule, ReactiveFormsModule, MatSelectModule, NoopAnimationsModule],
+      providers: [
+        SpecialtyService,
+        VetService,
+        HttpErrorHandler,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}},
+        {provide: ActivatedRoute, useValue: {snapshot: {params: {id: '1'}, data: {specs: [], vet: {id: 1, firstName: 'Test', lastName: 'Vet', specialties: []}}}}}
+      ]
     })
       .compileComponents();
   }));
@@ -44,10 +62,8 @@ describe('VetEditComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(VetEditComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
-// TODO complete test
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
