@@ -34,6 +34,7 @@ import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
+import { HttpErrorHandler } from '../error.service';
 
 describe('SpecialtyService', () => {
   beforeEach(() => {
@@ -41,18 +42,15 @@ describe('SpecialtyService', () => {
       imports: [],
       providers: [
         SpecialtyService,
+        HttpErrorHandler,
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
     });
   });
 
-  it('should ...', waitForAsync(
-    inject(
-      [HttpTestingController],
-      (specialtyService: SpecialtyService, http: HttpClient) => {
-        expect(specialtyService).toBeTruthy();
-      },
-    ),
-  ));
+  it('should be created', () => {
+    const service = TestBed.inject(SpecialtyService);
+    expect(service).toBeTruthy();
+  });
 });

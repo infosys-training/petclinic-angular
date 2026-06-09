@@ -34,6 +34,7 @@ import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
+import { HttpErrorHandler } from '../error.service';
 
 describe('VetService', () => {
   beforeEach(() => {
@@ -41,18 +42,15 @@ describe('VetService', () => {
       imports: [],
       providers: [
         VetService,
+        HttpErrorHandler,
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
     });
   });
 
-  it('should ...', waitForAsync(
-    inject(
-      [HttpTestingController],
-      (vetService: VetService, http: HttpClient) => {
-        expect(vetService).toBeTruthy();
-      },
-    ),
-  ));
+  it('should be created', () => {
+    const service = TestBed.inject(VetService);
+    expect(service).toBeTruthy();
+  });
 });

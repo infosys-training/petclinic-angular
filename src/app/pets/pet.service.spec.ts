@@ -34,6 +34,7 @@ import {
   withInterceptorsFromDi,
   withXhr,
 } from '@angular/common/http';
+import { HttpErrorHandler } from '../error.service';
 
 describe('PetService', () => {
   beforeEach(() => {
@@ -41,18 +42,15 @@ describe('PetService', () => {
       imports: [],
       providers: [
         PetService,
+        HttpErrorHandler,
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
     });
   });
 
-  it('should ...', waitForAsync(
-    inject(
-      [HttpTestingController],
-      (petService: PetService, http: HttpClient) => {
-        expect(petService).toBeTruthy();
-      },
-    ),
-  ));
+  it('should be created', () => {
+    const service = TestBed.inject(PetService);
+    expect(service).toBeTruthy();
+  });
 });

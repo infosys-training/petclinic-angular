@@ -34,6 +34,7 @@ import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
+import { HttpErrorHandler } from '../error.service';
 
 describe('VisitService', () => {
   beforeEach(() => {
@@ -41,18 +42,15 @@ describe('VisitService', () => {
       imports: [],
       providers: [
         VisitService,
+        HttpErrorHandler,
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
     });
   });
 
-  it('should ...', waitForAsync(
-    inject(
-      [HttpTestingController],
-      (visitService: VisitService, http: HttpClient) => {
-        expect(visitService).toBeTruthy();
-      },
-    ),
-  ));
+  it('should be created', () => {
+    const service = TestBed.inject(VisitService);
+    expect(service).toBeTruthy();
+  });
 });
