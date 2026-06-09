@@ -34,9 +34,6 @@
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
-            "allowedCommonJsDependencies": [
-              "moment"
-            ],
             "browser": "src/main.ts"
           },
           "configurations": {
@@ -98,12 +95,10 @@
             ],
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "node_modules/tether/dist/js/tether.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "assets": [

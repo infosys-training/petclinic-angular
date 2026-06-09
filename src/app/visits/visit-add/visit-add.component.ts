@@ -29,7 +29,7 @@ import {Pet} from '../../pets/pet';
 import {PetType} from '../../pettypes/pettype';
 import {Owner} from '../../owners/owner';
 
-import moment from 'moment';
+import { format } from 'date-fns';
 import {OwnerService} from '../../owners/owner.service';
 import { DatePipe } from '@angular/common';
 import { VisitListComponent } from '../visit-list/visit-list.component';
@@ -85,7 +85,7 @@ export class VisitAddComponent implements OnInit {
     const that = this;
 
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
-    visit.date = moment(visit.date).format('YYYY-MM-DD');
+    visit.date = format(visit.date, 'yyyy-MM-dd');
 
     this.visitService.addVisit(visit).subscribe(
       newVisit => {
