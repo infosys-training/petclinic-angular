@@ -34,7 +34,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class SpecialtyEditComponent implements OnInit {
   specialty: Specialty;
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private specialtyService: SpecialtyService,

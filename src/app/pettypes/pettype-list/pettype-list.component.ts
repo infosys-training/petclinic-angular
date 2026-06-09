@@ -14,8 +14,8 @@ import { finalize } from "rxjs/operators";
 })
 export class PettypeListComponent implements OnInit {
   pettypes: PetType[];
-  errorMessage: string;
-  responseStatus: number;
+  errorMessage = "";
+  responseStatus = 0;
   isPetTypesDataReceived: boolean = false;
   isInsert = false;
 

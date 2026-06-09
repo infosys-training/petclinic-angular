@@ -35,8 +35,8 @@ import { finalize } from "rxjs/operators";
 })
 export class SpecialtyListComponent implements OnInit {
   specialties: Specialty[];
-  errorMessage: string;
-  responseStatus: number;
+  errorMessage = "";
+  responseStatus = 0;
   isInsert = false;
   isSpecialitiesDataReceived: boolean = false;
 

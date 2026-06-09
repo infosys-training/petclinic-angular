@@ -39,9 +39,9 @@ import { Router } from "@angular/router";
 })
 export class VisitListComponent implements OnInit {
   @Input() visits: Visit[];
-  responseStatus: number;
+  responseStatus = 0;
   noVisits = false;
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private router: Router,

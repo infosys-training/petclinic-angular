@@ -35,8 +35,8 @@ import { finalize } from "rxjs/operators";
 })
 export class VetListComponent implements OnInit {
   vets: Vet[];
-  errorMessage: string;
-  responseStatus: number;
+  errorMessage = "";
+  responseStatus = 0;
   isVetDataReceived: boolean = false;
 
   constructor(

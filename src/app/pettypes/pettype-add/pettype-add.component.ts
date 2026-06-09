@@ -17,7 +17,7 @@ import { PetTypeService } from "../pettype.service";
 })
 export class PettypeAddComponent implements OnInit {
   pettype: PetType;
-  errorMessage: string;
+  errorMessage = "";
   @Output() newPetType = new EventEmitter<PetType>();
 
   constructor(private pettypeService: PetTypeService) {
@@ -27,7 +27,7 @@ export class PettypeAddComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(pettype: PetType) {
-    pettype.id = null;
+    pettype.id = undefined as any;
     this.pettypeService.addPetType(pettype).subscribe(
       (newPettype) => {
         this.pettype = newPettype;

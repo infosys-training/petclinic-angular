@@ -33,7 +33,7 @@ import { Owner } from "../owner";
   standalone: false,
 })
 export class OwnerDetailComponent implements OnInit {
-  errorMessage: string;
+  errorMessage = "";
   owner: Owner;
 
   constructor(

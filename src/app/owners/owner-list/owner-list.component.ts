@@ -34,10 +34,10 @@ import { finalize } from "rxjs/operators";
   standalone: false,
 })
 export class OwnerListComponent implements OnInit {
-  errorMessage: string;
-  lastName: string;
-  owners: Owner[];
-  listOfOwnersWithLastName: Owner[];
+  errorMessage = "";
+  lastName = '';
+  owners: Owner[] = [];
+  listOfOwnersWithLastName: Owner[] = [];
   isOwnersDataReceived: boolean = false;
 
   constructor(
@@ -81,7 +81,7 @@ export class OwnerListComponent implements OnInit {
           console.log("this.owners " + this.owners);
         },
         (error) => {
-          this.owners = null;
+          this.owners = [];
         },
       );
     }

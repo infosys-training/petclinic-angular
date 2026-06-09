@@ -41,14 +41,14 @@ import {
   standalone: false,
 })
 export class VetEditComponent implements OnInit {
-  vetEditForm: FormGroup;
-  idCtrl: FormControl;
-  firstNameCtrl: FormControl;
-  lastNameCtrl: FormControl;
-  specialtiesCtrl: FormControl;
+  vetEditForm!: FormGroup;
+  idCtrl!: FormControl;
+  firstNameCtrl!: FormControl;
+  lastNameCtrl!: FormControl;
+  specialtiesCtrl!: FormControl;
   vet: Vet;
   specList: Specialty[];
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private formBuilder: FormBuilder,

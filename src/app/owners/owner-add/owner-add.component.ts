@@ -34,7 +34,7 @@ import { Router } from "@angular/router";
 })
 export class OwnerAddComponent implements OnInit {
   owner: Owner;
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private ownerService: OwnerService,
@@ -46,7 +46,7 @@ export class OwnerAddComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(owner: Owner) {
-    owner.id = null;
+    owner.id = undefined as any;
     this.ownerService.addOwner(owner).subscribe(
       (newOwner) => {
         this.owner = newOwner;

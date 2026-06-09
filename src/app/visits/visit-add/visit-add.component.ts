@@ -29,7 +29,7 @@ import { Pet } from "../../pets/pet";
 import { PetType } from "../../pettypes/pettype";
 import { Owner } from "../../owners/owner";
 
-import * as moment from "moment";
+import moment from "moment";
 import { OwnerService } from "../../owners/owner.service";
 
 @Component({
@@ -45,7 +45,7 @@ export class VisitAddComponent implements OnInit {
   currentOwner: Owner;
   currentPetType: PetType;
   addedSuccess = false;
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private visitService: VisitService,
@@ -77,7 +77,7 @@ export class VisitAddComponent implements OnInit {
   }
 
   onSubmit(visit: Visit) {
-    visit.id = null;
+    visit.id = undefined as any;
     const that = this;
 
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)

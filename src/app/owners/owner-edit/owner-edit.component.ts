@@ -34,8 +34,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class OwnerEditComponent implements OnInit {
   owner: Owner;
-  errorMessage: string; // server error message
-  ownerId: number;
+  errorMessage = ""; // server error message
+  ownerId = 0;
   constructor(
     private ownerService: OwnerService,
     private route: ActivatedRoute,
@@ -62,7 +62,7 @@ export class OwnerEditComponent implements OnInit {
   }
 
   gotoOwnerDetail(owner: Owner) {
-    this.errorMessage = null;
+    this.errorMessage = '';
     this.router.navigate(["/owners", owner.id]);
   }
 }

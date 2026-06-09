@@ -36,10 +36,10 @@ import { SpecialtyService } from "../specialty.service";
   standalone: false,
 })
 export class SpecialtyAddComponent implements OnInit {
-  @ViewChild("specialityForm", { static: true }) specialityForm: NgForm;
+  @ViewChild("specialityForm", { static: true }) specialityForm!: NgForm;
   speciality: Specialty;
   addedSuccess = false;
-  errorMessage: string;
+  errorMessage = "";
   @Output() newSpeciality = new EventEmitter<Specialty>();
 
   constructor(private specialtyService: SpecialtyService) {

@@ -38,7 +38,7 @@ export class VetAddComponent implements OnInit {
   vet: Vet;
   specialtiesList: Specialty[];
   selectedSpecialty: Specialty;
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private specialtyService: SpecialtyService,
@@ -58,7 +58,7 @@ export class VetAddComponent implements OnInit {
   }
 
   onSubmit(vet: Vet) {
-    vet.id = null;
+    vet.id = undefined as any;
     vet.specialties = [];
     if (this.selectedSpecialty.id !== undefined) {
       vet.specialties.push(this.selectedSpecialty);

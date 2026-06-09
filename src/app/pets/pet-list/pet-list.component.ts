@@ -38,9 +38,9 @@ import { Pet } from "../pet";
   standalone: false,
 })
 export class PetListComponent implements OnInit {
-  errorMessage: string;
+  errorMessage = "";
   @Input() pet: Pet;
-  responseStatus: number;
+  responseStatus = 0;
   deleteSuccess = false;
 
   constructor(

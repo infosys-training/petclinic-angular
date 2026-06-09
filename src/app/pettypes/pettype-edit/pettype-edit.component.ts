@@ -34,7 +34,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class PettypeEditComponent implements OnInit {
   pettype: PetType;
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private pettypeService: PetTypeService,

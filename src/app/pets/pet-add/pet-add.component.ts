@@ -34,7 +34,7 @@ import { PetTypeService } from "../../pettypes/pettype.service";
 import { PetService } from "../pet.service";
 import { OwnerService } from "../../owners/owner.service";
 
-import * as moment from "moment";
+import moment from "moment";
 
 @Component({
   selector: "app-pet-add",
@@ -49,7 +49,7 @@ export class PetAddComponent implements OnInit {
   currentOwner: Owner;
   petTypes: PetType[];
   addedSuccess = false;
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private ownerService: OwnerService,
@@ -80,7 +80,7 @@ export class PetAddComponent implements OnInit {
   }
 
   onSubmit(pet: Pet) {
-    pet.id = null;
+    pet.id = undefined as any;
     pet.owner = this.currentOwner;
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
     pet.birthDate = moment(pet.birthDate).format("YYYY-MM-DD");

@@ -33,7 +33,7 @@ import { Owner } from "../../owners/owner";
 import { PetType } from "../../pettypes/pettype";
 import { PetTypeService } from "../../pettypes/pettype.service";
 
-import * as moment from "moment";
+import moment from "moment";
 import { OwnerService } from "../../owners/owner.service";
 
 @Component({
@@ -48,7 +48,7 @@ export class PetEditComponent implements OnInit {
   @Input() currentType: PetType;
   currentOwner: Owner;
   petTypes: PetType[];
-  errorMessage: string;
+  errorMessage = "";
 
   constructor(
     private petService: PetService,
