@@ -31,7 +31,7 @@
         <label for="firstName" class="col-sm-2 control-label">First Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="firstName" [(ngModel)]="owner.firstName" minlength="1" maxlength="30" pattern="^[a-zA-Z]*$" required name="firstName" #firstName="ngModel"/>
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="firstName.valid" [class.glyphicon-remove]="!firstName.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="firstName.valid" [class.bi-x]="!firstName.valid" aria-hidden="true"></span>
           @if (firstName.dirty && firstName.hasError('required')) {
             <span class="help-block">First name is required</span>
           }
@@ -50,7 +50,7 @@
         <label for="lastName" class="col-sm-2 control-label">Last Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="lastName" [(ngModel)]="owner.lastName" name="lastName" minlength="1" maxlength="30" pattern="^[a-zA-Z]*$" required #lastName="ngModel"/>
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="lastName.valid" [class.glyphicon-remove]="!lastName.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="lastName.valid" [class.bi-x]="!lastName.valid" aria-hidden="true"></span>
           @if (lastName.dirty && lastName.hasError('required')) {
             <span class="help-block">Last name is required</span>
           }
@@ -69,7 +69,7 @@
         <label for="address" class="col-sm-2 control-label">Address</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="address" [(ngModel)]="owner.address" name="address" maxlength="255"  required #address="ngModel"/>
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="address.valid" [class.glyphicon-remove]="!address.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="address.valid" [class.bi-x]="!address.valid" aria-hidden="true"></span>
           @if (address.dirty && address.hasError('required')) {
             <span class="help-block">Address is required</span>
           }
@@ -82,7 +82,7 @@
         <label for="city" class="col-sm-2 control-label">City</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="city" [(ngModel)]="owner.city" name="city" maxlength="80" required #city="ngModel"/>
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="city.valid" [class.glyphicon-remove]="!city.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="city.valid" [class.bi-x]="!city.valid" aria-hidden="true"></span>
           @if (city.dirty && city.hasError('required')) {
             <span class="help-block">City is required</span>
           }
@@ -95,7 +95,7 @@
         <label for="telephone" class="col-sm-2 control-label">Telephone</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="telephone" [(ngModel)]="owner.telephone" name="telephone" required minlength="1" maxlength="20" pattern="^[0-9]*$" #telephone="ngModel"/>
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="telephone.valid" [class.glyphicon-remove]="!telephone.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="telephone.valid" [class.bi-x]="!telephone.valid" aria-hidden="true"></span>
           @if (telephone.dirty && telephone.hasError('required')) {
             <span class="help-block">Phone number is required</span>
           }

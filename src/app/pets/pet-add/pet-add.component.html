@@ -41,8 +41,8 @@
         <div class="col-sm-10">
           <input id="name" name="name" minlength="1" maxlength="30"  pattern="^[A-Za-z0-9].{0,29}$" required class="form-control" type="text" [(ngModel)]="pet.name"
             #name="ngModel"/>
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="name.valid"
-          [class.glyphicon-remove]="!name.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="name.valid"
+          [class.bi-x]="!name.valid" aria-hidden="true"></span>
           @if (name.dirty && name.hasError('required')) {
             <span class="help-block">Name is required</span>
           }
@@ -66,8 +66,8 @@
             name="birthDate" #birthDate="ngModel">
           <mat-datepicker-toggle matSuffix [for]="birthDateDatepicker"></mat-datepicker-toggle>
           <mat-datepicker #birthDateDatepicker></mat-datepicker>
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="birthDate.valid"
-          [class.glyphicon-remove]="!birthDate.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="birthDate.valid"
+          [class.bi-x]="!birthDate.valid" aria-hidden="true"></span>
           @if (birthDate.dirty && birthDate.hasError('required')) {
             <span class="help-block"
             >BirthDate is required</span>
@@ -87,8 +87,8 @@
                 </option>
               }
             </select>
-            <span class="bi form-control-feedback" [class.glyphicon-ok]="type.valid"
-            [class.glyphicon-remove]="!type.valid" aria-hidden="true"></span>
+            <span class="bi form-control-feedback" [class.bi-check]="type.valid"
+            [class.bi-x]="!type.valid" aria-hidden="true"></span>
 
             @if (type.dirty && type.hasError('required')) {
               <span class="help-block"

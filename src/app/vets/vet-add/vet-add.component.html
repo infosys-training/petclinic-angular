@@ -36,7 +36,7 @@
           @if (firstName.dirty && firstName.hasError('pattern')) {
             <span class="help-block">First Name may only consist of letters</span>
           }
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="firstName.valid" [class.glyphicon-remove]="!firstName.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="firstName.valid" [class.bi-x]="!firstName.valid" aria-hidden="true"></span>
           @if ((vetForm.submitted && firstName.hasError('required')) || (firstName.dirty && firstName.hasError('required'))) {
             <span class="help-block">First name is required</span>
           }
@@ -46,7 +46,7 @@
         <label for="lastName" class="col-sm-2 control-label">Last Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="lastName" [(ngModel)]="vet.lastName" name="lastName" minlength="1" maxlength="30" pattern="^[a-zA-Z]*$"  required #lastName="ngModel"/>
-          <span class="bi form-control-feedback" [class.glyphicon-ok]="lastName.valid" [class.glyphicon-remove]="!lastName.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.bi-check]="lastName.valid" [class.bi-x]="!lastName.valid" aria-hidden="true"></span>
           @if (lastName.dirty && lastName.hasError('maxlength')) {
             <span class="help-block">Last Name may be only 30 characters long</span>
           }

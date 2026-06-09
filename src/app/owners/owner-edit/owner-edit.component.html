@@ -60,8 +60,8 @@
             />
           <span
             class="bi form-control-feedback"
-            [class.glyphicon-ok]="firstName.valid"
-            [class.glyphicon-remove]="!firstName.valid"
+            [class.bi-check]="firstName.valid"
+            [class.bi-x]="!firstName.valid"
             aria-hidden="true"
           ></span>
           @if (firstName.dirty && firstName.hasError('required')) {
@@ -111,8 +111,8 @@
                     />
                   <span
                     class="bi form-control-feedback"
-                    [class.glyphicon-ok]="lastName.valid"
-                    [class.glyphicon-remove]="!lastName.valid"
+                    [class.bi-check]="lastName.valid"
+                    [class.bi-x]="!lastName.valid"
                     aria-hidden="true"
                   ></span>
                   @if (lastName.dirty && lastName.hasError('required')) {
@@ -160,8 +160,8 @@
                             />
                           <span
                             class="bi form-control-feedback"
-                            [class.glyphicon-ok]="address.valid"
-                            [class.glyphicon-remove]="!address.valid"
+                            [class.bi-check]="address.valid"
+                            [class.bi-x]="!address.valid"
                             aria-hidden="true"
                           ></span>
                           @if (address.dirty && address.hasError('required')) {
@@ -197,8 +197,8 @@
                                 />
                               <span
                                 class="bi form-control-feedback"
-                                [class.glyphicon-ok]="city.valid"
-                                [class.glyphicon-remove]="!city.valid"
+                                [class.bi-check]="city.valid"
+                                [class.bi-x]="!city.valid"
                                 aria-hidden="true"
                               ></span>
                               @if (city.dirty && city.hasError('required')) {
@@ -236,8 +236,8 @@
                                     />
                                   <span
                                     class="bi form-control-feedback"
-                                    [class.glyphicon-ok]="telephone.valid"
-                                    [class.glyphicon-remove]="!telephone.valid"
+                                    [class.bi-check]="telephone.valid"
+                                    [class.bi-x]="!telephone.valid"
                                     aria-hidden="true"
                                   ></span>
                                   @if (telephone.dirty && telephone.hasError('required')) {
