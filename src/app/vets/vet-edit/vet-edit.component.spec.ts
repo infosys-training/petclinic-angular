@@ -23,10 +23,15 @@
  */
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {VetEditComponent} from './vet-edit.component';
 import {FormsModule} from '@angular/forms';
+import {SpecialtyService} from '../../specialties/specialty.service';
+import {VetService} from '../vet.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {HttpErrorHandler} from '../../error.service';
+import {ActivatedRoute} from '@angular/router';
 
 describe('VetEditComponent', () => {
   let component: VetEditComponent;
@@ -35,19 +40,31 @@ describe('VetEditComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [VetEditComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [HttpClientTestingModule],
+      providers: [
+        SpecialtyService,
+        VetService,
+        HttpErrorHandler,
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              data: {
+                vet: { id: 1, firstName: 'Test', lastName: 'Vet', specialties: [] },
+                specs: []
+              }
+            }
+          }
+        }
+      ]
     })
       .compileComponents();
   }));
 
-  beforeEach(() => {
+  it('should create', () => {
     fixture = TestBed.createComponent(VetEditComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    expect(component).toBeTruthy();
   });
-// TODO complete test
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });
