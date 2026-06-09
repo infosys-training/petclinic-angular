@@ -31,11 +31,16 @@ import {PetTypeService} from '../../pettypes/pettype.service';
 
 import * as moment from 'moment';
 import {OwnerService} from '../../owners/owner.service';
+import { DatePipe } from '@angular/common';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-pet-edit',
-  templateUrl: './pet-edit.component.html',
-  styleUrls: ['./pet-edit.component.css']
+    selector: 'app-pet-edit',
+    templateUrl: './pet-edit.component.html',
+    styleUrls: ['./pet-edit.component.css'],
+    standalone: true,
+    imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, DatePipe]
 })
 export class PetEditComponent implements OnInit {
   pet: Pet;

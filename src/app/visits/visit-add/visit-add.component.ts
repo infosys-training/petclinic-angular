@@ -31,11 +31,17 @@ import {Owner} from '../../owners/owner';
 
 import * as moment from 'moment';
 import {OwnerService} from '../../owners/owner.service';
+import { DatePipe } from '@angular/common';
+import { VisitListComponent } from '../visit-list/visit-list.component';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-visit-add',
-  templateUrl: './visit-add.component.html',
-  styleUrls: ['./visit-add.component.css']
+    selector: 'app-visit-add',
+    templateUrl: './visit-add.component.html',
+    styleUrls: ['./visit-add.component.css'],
+    standalone: true,
+    imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, VisitListComponent, DatePipe]
 })
 export class VisitAddComponent implements OnInit {
 

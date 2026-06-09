@@ -25,11 +25,15 @@ import {Specialty} from '../specialty';
 import {SpecialtyService} from '../specialty.service';
 import {Router} from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { SpecialtyAddComponent } from '../specialty-add/specialty-add.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-specialty-list',
-  templateUrl: './specialty-list.component.html',
-  styleUrls: ['./specialty-list.component.css']
+    selector: 'app-specialty-list',
+    templateUrl: './specialty-list.component.html',
+    styleUrls: ['./specialty-list.component.css'],
+    standalone: true,
+    imports: [FormsModule, SpecialtyAddComponent]
 })
 export class SpecialtyListComponent implements OnInit {
   specialties: Specialty[];

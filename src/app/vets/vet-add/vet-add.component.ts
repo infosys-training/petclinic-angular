@@ -26,11 +26,14 @@ import {SpecialtyService} from 'app/specialties/specialty.service';
 import {Vet} from '../vet';
 import {Router} from '@angular/router';
 import {VetService} from '../vet.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-vet-add',
-  templateUrl: './vet-add.component.html',
-  styleUrls: ['./vet-add.component.css']
+    selector: 'app-vet-add',
+    templateUrl: './vet-add.component.html',
+    styleUrls: ['./vet-add.component.css'],
+    standalone: true,
+    imports: [FormsModule]
 })
 export class VetAddComponent implements OnInit {
   vet: Vet;
