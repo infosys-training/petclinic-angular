@@ -41,7 +41,7 @@
         <div class="col-sm-10">
           <input id="name" name="name" minlength="1" maxlength="30"  pattern="^[A-Za-z0-9].{0,29}$" required class="form-control" type="text" [(ngModel)]="pet.name"
             #name="ngModel"/>
-          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="name.valid"
+          <span class="bi form-control-feedback" [class.glyphicon-ok]="name.valid"
           [class.glyphicon-remove]="!name.valid" aria-hidden="true"></span>
           @if (name.dirty && name.hasError('required')) {
             <span class="help-block">Name is required</span>
@@ -66,7 +66,7 @@
             name="birthDate" #birthDate="ngModel">
           <mat-datepicker-toggle matSuffix [for]="birthDateDatepicker"></mat-datepicker-toggle>
           <mat-datepicker #birthDateDatepicker></mat-datepicker>
-          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="birthDate.valid"
+          <span class="bi form-control-feedback" [class.glyphicon-ok]="birthDate.valid"
           [class.glyphicon-remove]="!birthDate.valid" aria-hidden="true"></span>
           @if (birthDate.dirty && birthDate.hasError('required')) {
             <span class="help-block"
@@ -87,7 +87,7 @@
                 </option>
               }
             </select>
-            <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="type.valid"
+            <span class="bi form-control-feedback" [class.glyphicon-ok]="type.valid"
             [class.glyphicon-remove]="!type.valid" aria-hidden="true"></span>
 
             @if (type.dirty && type.hasError('required')) {
@@ -101,8 +101,8 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <br/>
-          <button class="btn btn-default" type="button" (click)="gotoOwnerDetail()">< Back</button>
-          <button class="btn btn-default" type="submit"  [disabled]="!petForm.valid">Save Pet</button>
+          <button class="btn btn-secondary" type="button" (click)="gotoOwnerDetail()">< Back</button>
+          <button class="btn btn-secondary" type="submit"  [disabled]="!petForm.valid">Save Pet</button>
         </div>
       </div>
     </form>

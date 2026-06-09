@@ -59,7 +59,7 @@
             #firstName="ngModel"
             />
           <span
-            class="glyphicon form-control-feedback"
+            class="bi form-control-feedback"
             [class.glyphicon-ok]="firstName.valid"
             [class.glyphicon-remove]="!firstName.valid"
             aria-hidden="true"
@@ -110,7 +110,7 @@
                     #lastName="ngModel"
                     />
                   <span
-                    class="glyphicon form-control-feedback"
+                    class="bi form-control-feedback"
                     [class.glyphicon-ok]="lastName.valid"
                     [class.glyphicon-remove]="!lastName.valid"
                     aria-hidden="true"
@@ -159,7 +159,7 @@
                             #address="ngModel"
                             />
                           <span
-                            class="glyphicon form-control-feedback"
+                            class="bi form-control-feedback"
                             [class.glyphicon-ok]="address.valid"
                             [class.glyphicon-remove]="!address.valid"
                             aria-hidden="true"
@@ -196,7 +196,7 @@
                                 #city="ngModel"
                                 />
                               <span
-                                class="glyphicon form-control-feedback"
+                                class="bi form-control-feedback"
                                 [class.glyphicon-ok]="city.valid"
                                 [class.glyphicon-remove]="!city.valid"
                                 aria-hidden="true"
@@ -235,7 +235,7 @@
                                     #telephone="ngModel"
                                     />
                                   <span
-                                    class="glyphicon form-control-feedback"
+                                    class="bi form-control-feedback"
                                     [class.glyphicon-ok]="telephone.valid"
                                     [class.glyphicon-remove]="!telephone.valid"
                                     aria-hidden="true"
@@ -269,13 +269,13 @@
 
                                       <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                          <button class="btn btn-default" (click)="gotoOwnerDetail(owner)">
+                                          <button class="btn btn-secondary" (click)="gotoOwnerDetail(owner)">
                                             Back
                                           </button>
                                           <button
                                             type="submit"
                                             [disabled]="!ownerForm.valid"
-                                            class="btn btn-default"
+                                            class="btn btn-secondary"
                                             >
                                             Update Owner
                                           </button>

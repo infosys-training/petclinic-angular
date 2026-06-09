@@ -27,7 +27,7 @@
         <label for="firstName" class="col-sm-2 control-label">First Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="firstName" name="firstName" minlength="1" maxlength="30" pattern="^[A-Za-z]*$"  required formControlName="firstName"/>
-          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="firstNameCtrl.valid" [class.glyphicon-remove]="!firstNameCtrl.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.glyphicon-ok]="firstNameCtrl.valid" [class.glyphicon-remove]="!firstNameCtrl.valid" aria-hidden="true"></span>
           @if (firstNameCtrl.dirty && firstNameCtrl.hasError('maxlength')) {
             <span class="help-block">First Name may be only 30 characters long</span>
           }
@@ -46,7 +46,7 @@
         <label for="lastName" class="col-sm-2 control-label">Last Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="lastName" name="lastName" minlength="1" maxlength="30" pattern="^[A-Za-z]*$"  required formControlName="lastName"/>
-          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="lastNameCtrl.valid" [class.glyphicon-remove]="!lastNameCtrl.valid" aria-hidden="true"></span>
+          <span class="bi form-control-feedback" [class.glyphicon-ok]="lastNameCtrl.valid" [class.glyphicon-remove]="!lastNameCtrl.valid" aria-hidden="true"></span>
           @if (lastNameCtrl.dirty && lastNameCtrl.hasError('maxlength')) {
             <span class="help-block">Last Name may be only 30 characters long</span>
           }
@@ -78,8 +78,8 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <br/>
-          <button class="btn btn-default" type="button" (click)="gotoVetList()">< Back</button>
-          <button class="btn btn-default" type="submit" [disabled]="vetEditForm.invalid">Save Vet</button>
+          <button class="btn btn-secondary" type="button" (click)="gotoVetList()">< Back</button>
+          <button class="btn btn-secondary" type="submit" [disabled]="vetEditForm.invalid">Save Vet</button>
         </div>
       </div>
     </form>
