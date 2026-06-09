@@ -9,7 +9,8 @@
     "test": "ng test",
     "test-headless": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "cypress run",
+    "e2e:open": "cypress open"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "codelyzer": "^6.0.0",
+    "cypress": "^14.5.4",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
@@ -60,7 +62,6 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "protractor": "~7.0.0",
     "source-map-explorer": "^1.5.0",
     "ts-node": "~4.1.0",
     "typescript": "5.8.3"
