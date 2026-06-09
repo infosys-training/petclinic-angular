@@ -24,9 +24,15 @@
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import {VetAddComponent} from './vet-add.component';
 import {FormsModule} from '@angular/forms';
+import {SpecialtyService} from '../../specialties/specialty.service';
+import {VetService} from '../vet.service';
+import {HttpErrorHandler} from '../../error.service';
+import {Router, ActivatedRoute} from '@angular/router';
 
 describe('VetAddComponent', () => {
   let component: VetAddComponent;
@@ -36,7 +42,16 @@ describe('VetAddComponent', () => {
     TestBed.configureTestingModule({
       declarations: [VetAddComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
+      imports: [FormsModule],
+      providers: [
+        SpecialtyService,
+        VetService,
+        HttpErrorHandler,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}},
+        {provide: ActivatedRoute, useValue: {snapshot: {params: {}}}}
+      ]
     })
       .compileComponents();
   }));
@@ -46,8 +61,7 @@ describe('VetAddComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-// TODO complete test
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

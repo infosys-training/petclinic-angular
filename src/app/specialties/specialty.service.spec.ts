@@ -23,20 +23,34 @@
  */
 
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
-import {SpecialtyService} from './specialty.service';
-import {HttpClient} from '@angular/common/http';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { SpecialtyService } from './specialty.service';
+import {
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+  withXhr,
+} from '@angular/common/http';
+import {
+  HttpTestingController,
+  provideHttpClientTesting,
+} from '@angular/common/http/testing';
+import { HttpErrorHandler } from '../error.service';
 
 describe('SpecialtyService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      // Import the HttpClient mocking services
-      imports: [HttpClientTestingModule],
-      providers: [SpecialtyService]
+      imports: [],
+      providers: [
+        SpecialtyService,
+        HttpErrorHandler,
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     });
   });
 
-  it('should ...', waitForAsync(inject([HttpTestingController], (specialtyService: SpecialtyService, http: HttpClient) => {
-    expect(specialtyService).toBeTruthy();
-  })));
+  it('should be created', () => {
+    const service = TestBed.inject(SpecialtyService);
+    expect(service).toBeTruthy();
+  });
 });
