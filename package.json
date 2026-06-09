@@ -1,6 +1,6 @@
 {
   "name": "spring-petclinic-angular",
-  "version": "11.2.11",
+  "version": "12.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

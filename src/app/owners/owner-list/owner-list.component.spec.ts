@@ -72,9 +72,8 @@ describe('OwnerListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-    declarations: [DummyComponent],
     schemas: [NO_ERRORS_SCHEMA],
-    imports: [CommonModule, FormsModule, OwnersModule,
+    imports: [CommonModule, FormsModule, OwnersModule, DummyComponent,
         RouterTestingModule.withRoutes([{ path: 'owners', component: OwnerListComponent },
             { path: 'owners/add', component: OwnerAddComponent },
             { path: 'owners/:id', component: OwnerDetailComponent },
