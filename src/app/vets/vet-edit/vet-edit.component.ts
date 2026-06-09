@@ -26,12 +26,16 @@ import {VetService} from '../vet.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SpecialtyService} from '../../specialties/specialty.service';
 import {Specialty} from '../../specialties/specialty';
-import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
+import { MatFormField } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-vet-edit',
-  templateUrl: './vet-edit.component.html',
-  styleUrls: ['./vet-edit.component.css']
+    selector: 'app-vet-edit',
+    templateUrl: './vet-edit.component.html',
+    styleUrls: ['./vet-edit.component.css'],
+    imports: [FormsModule, ReactiveFormsModule, MatFormField, MatSelect, MatOption]
 })
 export class VetEditComponent implements OnInit {
   vetEditForm: FormGroup;

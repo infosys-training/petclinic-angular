@@ -31,7 +31,7 @@ import {SpecialtyService} from '../specialty.service';
 import {Specialty} from '../specialty';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ActivatedRouteStub, RouterStub} from '../../testing/router-stubs';
-import {Observable, of} from 'rxjs/index';
+import {Observable, of} from 'rxjs';
 import Spy = jasmine.Spy;
 
 class SpecialityServiceStub {
@@ -54,15 +54,14 @@ describe('SpecialtyListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SpecialtyListComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule],
-      providers: [
-        {provide: SpecialtyService, useClass: SpecialityServiceStub},
-        {provide: Router, useClass: RouterStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
-      ]
-    })
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, SpecialtyListComponent],
+    providers: [
+        { provide: SpecialtyService, useClass: SpecialityServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
+    ]
+})
       .compileComponents();
   }));
 

@@ -29,13 +29,17 @@ import {Owner} from '../../owners/owner';
 import {PetType} from '../../pettypes/pettype';
 import {PetTypeService} from '../../pettypes/pettype.service';
 
-import * as moment from 'moment';
+import { format } from 'date-fns';
 import {OwnerService} from '../../owners/owner.service';
+import { DatePipe } from '@angular/common';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-pet-edit',
-  templateUrl: './pet-edit.component.html',
-  styleUrls: ['./pet-edit.component.css']
+    selector: 'app-pet-edit',
+    templateUrl: './pet-edit.component.html',
+    styleUrls: ['./pet-edit.component.css'],
+    imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, DatePipe]
 })
 export class PetEditComponent implements OnInit {
   pet: Pet;
@@ -79,7 +83,7 @@ export class PetEditComponent implements OnInit {
     pet.type = this.currentType;
     const that = this;
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
-    pet.birthDate = moment(pet.birthDate).format('YYYY-MM-DD');
+    pet.birthDate = format(pet.birthDate, 'yyyy-MM-dd');
 
     this.petService.updatePet(pet.id.toString(), pet).subscribe(
       res => this.gotoOwnerDetail(this.currentOwner),

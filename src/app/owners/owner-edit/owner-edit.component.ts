@@ -24,11 +24,13 @@ import { Component, OnInit } from '@angular/core';
 import { OwnerService } from '../owner.service';
 import { Owner } from '../owner';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-owner-edit',
-  templateUrl: './owner-edit.component.html',
-  styleUrls: ['./owner-edit.component.css'],
+    selector: 'app-owner-edit',
+    templateUrl: './owner-edit.component.html',
+    styleUrls: ['./owner-edit.component.css'],
+    imports: [FormsModule]
 })
 export class OwnerEditComponent implements OnInit {
   owner: Owner;

@@ -28,14 +28,18 @@ import {PetType} from '../../pettypes/pettype';
 import {VisitService} from '../visit.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import * as moment from 'moment';
+import { format } from 'date-fns';
 import {OwnerService} from '../../owners/owner.service';
 import {PetService} from '../../pets/pet.service';
+import { DatePipe } from '@angular/common';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-visit-edit',
-  templateUrl: './visit-edit.component.html',
-  styleUrls: ['./visit-edit.component.css']
+    selector: 'app-visit-edit',
+    templateUrl: './visit-edit.component.html',
+    styleUrls: ['./visit-edit.component.css'],
+    imports: [FormsModule, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, DatePipe]
 })
 export class VisitEditComponent implements OnInit {
   visit: Visit;
@@ -80,7 +84,7 @@ export class VisitEditComponent implements OnInit {
     visit.pet = this.currentPet;
 
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
-    visit.date = moment(visit.date).format('YYYY-MM-DD');
+    visit.date = format(visit.date, 'yyyy-MM-dd');
 
     this.visitService.updateVisit(visit.id.toString(), visit).subscribe(
       res => this.gotoOwnerDetail(),

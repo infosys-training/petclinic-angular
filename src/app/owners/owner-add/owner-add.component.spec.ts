@@ -22,7 +22,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { OwnerAddComponent } from './owner-add.component';
 import { FormsModule } from '@angular/forms';
@@ -49,28 +49,26 @@ describe('OwnerAddComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [OwnerAddComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule, RouterTestingModule],
-        providers: [
-          { provide: OwnerService, useClass: OwnserServiceStub },
-          { provide: Router, useClass: RouterStub },
-        ],
-      }).compileComponents();
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, RouterTestingModule, OwnerAddComponent],
+    providers: [
+        { provide: OwnerService, useClass: OwnserServiceStub },
+        { provide: Router, useClass: RouterStub },
+    ],
+}).compileComponents();
     })
   );
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [OwnerAddComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        imports: [FormsModule, RouterTestingModule],
-        providers: [
-          { provide: OwnerService, useClass: OwnserServiceStub },
-          { provide: Router, useClass: RouterStub },
-        ],
-      }).compileComponents();
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [FormsModule, RouterTestingModule, OwnerAddComponent],
+    providers: [
+        { provide: OwnerService, useClass: OwnserServiceStub },
+        { provide: Router, useClass: RouterStub },
+    ],
+}).compileComponents();
     })
   );
 
@@ -97,7 +95,7 @@ describe('OwnerAddComponent', () => {
   });
 
  
-  it('add owner', async(() => {
+  it('add owner', waitForAsync(() => {
     let buttons = fixture.debugElement.queryAll(By.css('button'));
     let addOwnerButton = buttons[1].nativeElement;
     spyOn(component, 'onSubmit');

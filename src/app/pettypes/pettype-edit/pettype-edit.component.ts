@@ -24,11 +24,13 @@ import {Component, OnInit} from '@angular/core';
 import {PetType} from '../pettype';
 import {PetTypeService} from '../pettype.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-pettype-edit',
-  templateUrl: './pettype-edit.component.html',
-  styleUrls: ['./pettype-edit.component.css']
+    selector: 'app-pettype-edit',
+    templateUrl: './pettype-edit.component.html',
+    styleUrls: ['./pettype-edit.component.css'],
+    imports: [FormsModule]
 })
 export class PettypeEditComponent implements OnInit {
   pettype: PetType;

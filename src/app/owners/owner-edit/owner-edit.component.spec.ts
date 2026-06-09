@@ -23,7 +23,6 @@
  */
 
 import {
-  async,
   ComponentFixture,
   TestBed,
   waitForAsync,
@@ -53,18 +52,17 @@ describe('OwnerEditComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [OwnerEditComponent],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
-        // schemas: [ NO_ERRORS_SCHEMA ],
-        imports: [FormsModule, RouterTestingModule.withRoutes([
-          { path: 'owners', component: OwnerListComponent}
-      ])],
-        providers: [
-          { provide: OwnerService, useClass: OwnserServiceStub },
-          { provide: Router, useClass: RouterStub },
-          { provide: ActivatedRoute, useClass: ActivatedRouteStub },
-        ],
-      }).compileComponents();
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    // schemas: [ NO_ERRORS_SCHEMA ],
+    imports: [FormsModule, RouterTestingModule.withRoutes([
+            { path: 'owners', component: OwnerListComponent }
+        ]), OwnerEditComponent],
+    providers: [
+        { provide: OwnerService, useClass: OwnserServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+    ],
+}).compileComponents();
     })
   );
 
@@ -89,7 +87,7 @@ describe('OwnerEditComponent', () => {
   });
 
  
-  it('update owner', async(() => {
+  it('update owner', waitForAsync(() => {
     let buttons = fixture.debugElement.queryAll(By.css('button'));
     let updateOwnerButton = buttons[1].nativeElement;
     spyOn(component, 'onSubmit');

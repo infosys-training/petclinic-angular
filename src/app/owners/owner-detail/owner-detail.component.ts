@@ -24,12 +24,14 @@ import {Component, OnInit} from '@angular/core';
 import {OwnerService} from '../owner.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Owner} from '../owner';
+import { PetListComponent } from '../../pets/pet-list/pet-list.component';
 
 
 @Component({
-  selector: 'app-owner-detail',
-  templateUrl: './owner-detail.component.html',
-  styleUrls: ['./owner-detail.component.css']
+    selector: 'app-owner-detail',
+    templateUrl: './owner-detail.component.html',
+    styleUrls: ['./owner-detail.component.css'],
+    imports: [PetListComponent]
 })
 export class OwnerDetailComponent implements OnInit {
   errorMessage: string;

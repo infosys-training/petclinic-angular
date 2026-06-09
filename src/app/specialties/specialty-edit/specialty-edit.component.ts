@@ -24,11 +24,13 @@ import {Component, OnInit} from '@angular/core';
 import {Specialty} from '../specialty';
 import {SpecialtyService} from '../specialty.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-specialty-edit',
-  templateUrl: './specialty-edit.component.html',
-  styleUrls: ['./specialty-edit.component.css']
+    selector: 'app-specialty-edit',
+    templateUrl: './specialty-edit.component.html',
+    styleUrls: ['./specialty-edit.component.css'],
+    imports: [FormsModule]
 })
 export class SpecialtyEditComponent implements OnInit {
   specialty: Specialty;
