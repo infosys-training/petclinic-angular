@@ -27,6 +27,11 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import {VetAddComponent} from './vet-add.component';
 import {FormsModule} from '@angular/forms';
+import {SpecialtyService} from '../../specialties/specialty.service';
+import {VetService} from '../vet.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpErrorHandler} from '../../error.service';
 
 describe('VetAddComponent', () => {
   let component: VetAddComponent;
@@ -36,7 +41,8 @@ describe('VetAddComponent', () => {
     TestBed.configureTestingModule({
       declarations: [VetAddComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
+      imports: [FormsModule, HttpClientTestingModule, RouterTestingModule],
+      providers: [SpecialtyService, VetService, HttpErrorHandler]
     })
       .compileComponents();
   }));
@@ -46,8 +52,7 @@ describe('VetAddComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-// TODO complete test
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
