@@ -32,7 +32,7 @@ export class VetResolver  {
   constructor(private vetService: VetService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Vet> | Promise<Vet> | Vet {
-    return this.vetService.getVetById(route.paramMap.get('id'));
+    return this.vetService.getVetById(route.paramMap.get('id')!);
   }
 
 }
