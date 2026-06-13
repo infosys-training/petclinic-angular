@@ -26,7 +26,31 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import {VetEditComponent} from './vet-edit.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {SpecialtyService} from '../../specialties/specialty.service';
+import {VetService} from '../vet.service';
+import {Router, ActivatedRoute} from '@angular/router';
+import {RouterStub, ActivatedRouteStub} from '../../testing/router-stubs';
+import {Observable, of} from 'rxjs';
+import {Specialty} from '../../specialties/specialty';
+import {Vet} from '../vet';
+
+class SpecialtyServiceStub {
+  getSpecialties(): Observable<Specialty[]> {
+    return of([]);
+  }
+}
+
+class VetServiceStub {
+  getVetById(vetId: string): Observable<Vet> {
+    return of({id: 1, firstName: 'James', lastName: 'Carter', specialties: []} as Vet);
+  }
+  updateVet(vetId: string, vet: Vet): Observable<Vet> {
+    return of();
+  }
+}
 
 describe('VetEditComponent', () => {
   let component: VetEditComponent;
@@ -36,18 +60,28 @@ describe('VetEditComponent', () => {
     TestBed.configureTestingModule({
       declarations: [VetEditComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FormsModule]
+      imports: [FormsModule, ReactiveFormsModule, MatSelectModule, NoopAnimationsModule],
+      providers: [
+        {provide: SpecialtyService, useClass: SpecialtyServiceStub},
+        {provide: VetService, useClass: VetServiceStub},
+        {provide: Router, useClass: RouterStub},
+        {provide: ActivatedRoute, useClass: ActivatedRouteStub},
+      ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
+    const activatedRoute = TestBed.inject(ActivatedRoute) as any;
+    activatedRoute.snapshotData = {
+      vet: {id: 1, firstName: 'James', lastName: 'Carter', specialties: []},
+      specs: [],
+    };
     fixture = TestBed.createComponent(VetEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-// TODO complete test
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

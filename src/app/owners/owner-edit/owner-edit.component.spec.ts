@@ -23,7 +23,6 @@
  */
 
 import {
-  async,
   ComponentFixture,
   TestBed,
   waitForAsync,
@@ -72,7 +71,7 @@ describe('OwnerEditComponent', () => {
     fixture = TestBed.createComponent(OwnerEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router=TestBed.get(Router);
+    router=TestBed.inject(Router);
     spyOn(router,'navigate');
   });
 
@@ -80,18 +79,18 @@ describe('OwnerEditComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('back button routing', async() => {
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
-    let backbutton = buttons[0];
+  it('back button routing', waitForAsync(() => {
+    const buttons = fixture.debugElement.queryAll(By.css('button'));
+    const backbutton = buttons[0];
     backbutton.triggerEventHandler('click', null);
     spyOn(component, 'gotoOwnerDetail').and.callThrough();
     expect(router.navigate).toHaveBeenCalledWith(['/owners', 1]);
-  });
+  }));
 
  
-  it('update owner', async(() => {
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
-    let updateOwnerButton = buttons[1].nativeElement;
+  it('update owner', waitForAsync(() => {
+    const buttons = fixture.debugElement.queryAll(By.css('button'));
+    const updateOwnerButton = buttons[1].nativeElement;
     spyOn(component, 'onSubmit');
     updateOwnerButton.click();
     expect(component.onSubmit).toHaveBeenCalled();
