@@ -12,7 +12,10 @@
     "target": "ES2022",
     "typeRoots": ["node_modules/@types"],
     "module": "es2020",
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "ignoreDeprecations": "6.0",
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false
   },
   "angularCompilerOptions": {
     "strictTemplates": true,
