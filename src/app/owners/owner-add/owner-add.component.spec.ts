@@ -78,7 +78,7 @@ describe('OwnerAddComponent', () => {
     fixture = TestBed.createComponent(OwnerAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router=TestBed.get(Router);
+    router=TestBed.inject(Router);
     spyOn(router,'navigate');
   });
 
@@ -89,8 +89,8 @@ describe('OwnerAddComponent', () => {
   
 
   it('back button routing', async() => {
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
-    let backbutton = buttons[0];
+    const buttons = fixture.debugElement.queryAll(By.css('button'));
+    const backbutton = buttons[0];
     backbutton.triggerEventHandler('click', null);
     spyOn(component, 'gotoOwnersList').and.callThrough();
     expect(router.navigate).toHaveBeenCalledWith(['/owners']);
@@ -98,8 +98,8 @@ describe('OwnerAddComponent', () => {
 
  
   it('add owner', async(() => {
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
-    let addOwnerButton = buttons[1].nativeElement;
+    const buttons = fixture.debugElement.queryAll(By.css('button'));
+    const addOwnerButton = buttons[1].nativeElement;
     spyOn(component, 'onSubmit');
     addOwnerButton.click();
     expect(component.onSubmit).toHaveBeenCalled();
