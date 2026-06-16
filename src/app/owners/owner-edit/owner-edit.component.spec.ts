@@ -23,7 +23,6 @@
  */
 
 import {
-  async,
   ComponentFixture,
   TestBed,
   waitForAsync,
@@ -80,16 +79,16 @@ describe('OwnerEditComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('back button routing', async() => {
+  it('back button routing', waitForAsync(() => {
     const buttons = fixture.debugElement.queryAll(By.css('button'));
     const backbutton = buttons[0];
     backbutton.triggerEventHandler('click', null);
     spyOn(component, 'gotoOwnerDetail').and.callThrough();
     expect(router.navigate).toHaveBeenCalledWith(['/owners', 1]);
-  });
+  }));
 
- 
-  it('update owner', async(() => {
+
+  it('update owner', waitForAsync(() => {
     const buttons = fixture.debugElement.queryAll(By.css('button'));
     const updateOwnerButton = buttons[1].nativeElement;
     spyOn(component, 'onSubmit');

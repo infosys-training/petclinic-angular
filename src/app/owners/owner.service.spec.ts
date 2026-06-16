@@ -41,6 +41,7 @@ import { HttpErrorHandler } from '../error.service';
 
 import { OwnerService } from './owner.service';
 import { Owner } from './owner';
+import { Pet } from '../pets/pet';
 import { Type } from '@angular/core';
 import { defer } from 'rxjs';
 
@@ -121,7 +122,7 @@ describe('OwnerService', () => {
       address: '110 W. Church St.',
       city: 'Madison',
       telephone: '6085551023',
-      pets: [],
+      pets: [] as Pet[],
     };
 
     ownerService
@@ -152,7 +153,7 @@ describe('OwnerService', () => {
       address: '110 W. Church St.',
       city: 'Madison',
       telephone: '6085551023',
-      pets: [],
+      pets: [] as Pet[],
     };
 
     ownerService
