@@ -25,21 +25,21 @@ import {
   Input,
   OnInit,
   ChangeDetectionStrategy,
-} from "@angular/core";
-import { Pet } from "../pet";
-import { PetService } from "../pet.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Owner } from "../../owners/owner";
-import { PetType } from "../../pettypes/pettype";
-import { PetTypeService } from "../../pettypes/pettype.service";
+} from '@angular/core';
+import { Pet } from '../pet';
+import { PetService } from '../pet.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Owner } from '../../owners/owner';
+import { PetType } from '../../pettypes/pettype';
+import { PetTypeService } from '../../pettypes/pettype.service';
 
-import moment from "moment";
-import { OwnerService } from "../../owners/owner.service";
+import moment from 'moment';
+import { OwnerService } from '../../owners/owner.service';
 
 @Component({
-  selector: "app-pet-edit",
-  templateUrl: "./pet-edit.component.html",
-  styleUrls: ["./pet-edit.component.css"],
+  selector: 'app-pet-edit',
+  templateUrl: './pet-edit.component.html',
+  styleUrls: ['./pet-edit.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
@@ -86,7 +86,7 @@ export class PetEditComponent implements OnInit {
     pet.type = this.currentType;
     const that = this;
     // format output from datepicker to short string yyyy-mm-dd format (rfc3339)
-    pet.birthDate = moment(pet.birthDate).format("YYYY-MM-DD");
+    pet.birthDate = moment(pet.birthDate).format('YYYY-MM-DD');
 
     this.petService.updatePet(pet.id.toString(), pet).subscribe(
       (res) => this.gotoOwnerDetail(this.currentOwner),
@@ -95,6 +95,6 @@ export class PetEditComponent implements OnInit {
   }
 
   gotoOwnerDetail(owner: Owner) {
-    this.router.navigate(["/owners", owner.id]);
+    this.router.navigate(['/owners', owner.id]);
   }
 }

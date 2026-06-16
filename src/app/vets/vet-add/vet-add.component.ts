@@ -20,17 +20,17 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Specialty } from "../../specialties/specialty";
-import { SpecialtyService } from "app/specialties/specialty.service";
-import { Vet } from "../vet";
-import { Router } from "@angular/router";
-import { VetService } from "../vet.service";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Specialty } from '../../specialties/specialty';
+import { SpecialtyService } from 'app/specialties/specialty.service';
+import { Vet } from '../vet';
+import { Router } from '@angular/router';
+import { VetService } from '../vet.service';
 
 @Component({
-  selector: "app-vet-add",
-  templateUrl: "./vet-add.component.html",
-  styleUrls: ["./vet-add.component.css"],
+  selector: 'app-vet-add',
+  templateUrl: './vet-add.component.html',
+  styleUrls: ['./vet-add.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
@@ -73,6 +73,6 @@ export class VetAddComponent implements OnInit {
   }
 
   gotoVetList() {
-    this.router.navigate(["/vets"]);
+    this.router.navigate(['/vets']);
   }
 }
