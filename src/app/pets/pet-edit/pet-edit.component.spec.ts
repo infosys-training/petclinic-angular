@@ -97,9 +97,9 @@ describe('PetEditComponent', () => {
         address: '110 W. Liberty St.',
         city: 'Madison',
         telephone: '6085551023',
-        pets: null
+        pets: []
       },
-      visits: null
+      visits: []
     };
     petService = fixture.debugElement.injector.get(PetService);
     spy = spyOn(petService, 'updatePet')
