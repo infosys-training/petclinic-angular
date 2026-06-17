@@ -7,6 +7,12 @@ interface ErrorAlertProps {
 
 export default function ErrorAlert({ message }: ErrorAlertProps) {
   const [show, setShow] = useState(true);
+  const [prevMessage, setPrevMessage] = useState(message);
+
+  if (message !== prevMessage) {
+    setPrevMessage(message);
+    setShow(true);
+  }
 
   if (!show) return null;
 

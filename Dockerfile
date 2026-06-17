@@ -24,7 +24,7 @@ RUN printf 'server {\n\
 \n\
     location /petclinic/ {\n\
         alias /usr/share/nginx/html/;\n\
-        try_files $uri $uri/ /index.html;\n\
+        try_files $uri $uri/ /petclinic/index.html;\n\
     }\n\
 \n\
     location / {\n\

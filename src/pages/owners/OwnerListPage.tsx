@@ -10,15 +10,16 @@ import type { Owner } from '../../types';
 
 export default function OwnerListPage() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [submittedSearch, setSubmittedSearch] = useState('');
   const fetchOwners = useCallback(
-    () => (searchTerm ? searchOwners(searchTerm) : getOwners()),
-    [searchTerm],
+    () => (submittedSearch ? searchOwners(submittedSearch) : getOwners()),
+    [submittedSearch],
   );
-  const { data: owners, loading, error, refetch } = useApi<Owner[]>(fetchOwners);
+  const { data: owners, loading, error } = useApi<Owner[]>(fetchOwners);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    refetch();
+    setSubmittedSearch(searchTerm);
   };
 
   return (
