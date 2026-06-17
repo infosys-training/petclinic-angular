@@ -1,33 +1,44 @@
 ARG DOCKER_HUB="docker.io"
-ARG NGINX_VERSION="1.17.6"
-ARG NODE_VERSION="16.3-alpine"
+ARG NGINX_VERSION="1.25"
+ARG NODE_VERSION="20-alpine"
 
-FROM $DOCKER_HUB/library/node:$NODE_VERSION as build
+# Stage 1: Build
+FROM $DOCKER_HUB/library/node:$NODE_VERSION AS build
 
+WORKDIR /app
 
-COPY . /workspace/
+COPY package.json package-lock.json ./
+RUN npm ci
 
-ARG NPM_REGISTRY=" https://registry.npmjs.org"
+COPY . .
+RUN npm run build
 
-RUN echo "registry = \"$NPM_REGISTRY\"" > /workspace/.npmrc                              && \
-    cd /workspace/                                                                       && \
-    npm install                                                                          && \
-    npm run build
-
+# Stage 2: Serve
 FROM $DOCKER_HUB/library/nginx:$NGINX_VERSION AS runtime
 
+# SPA fallback config
+RUN printf 'server {\n\
+    listen 8080;\n\
+    root /usr/share/nginx/html;\n\
+    index index.html;\n\
+\n\
+    location /petclinic/ {\n\
+        alias /usr/share/nginx/html/;\n\
+        try_files $uri $uri/ /petclinic/index.html;\n\
+    }\n\
+\n\
+    location / {\n\
+        return 301 /petclinic/;\n\
+    }\n\
+}\n' > /etc/nginx/conf.d/default.conf
 
-COPY  --from=build /workspace/dist/ /usr/share/nginx/html/
+COPY --from=build /app/dist/ /usr/share/nginx/html/
 
-RUN chmod a+rwx /var/cache/nginx /var/run /var/log/nginx                        && \
-    sed -i.bak 's/listen\(.*\)80;/listen 8080;/' /etc/nginx/conf.d/default.conf && \
+RUN chmod a+rwx /var/cache/nginx /var/run /var/log/nginx && \
     sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
-
 
 EXPOSE 8080
 
 USER nginx
 
-HEALTHCHECK     CMD     [ "service", "nginx", "status" ]
-
-
+HEALTHCHECK CMD ["service", "nginx", "status"]
